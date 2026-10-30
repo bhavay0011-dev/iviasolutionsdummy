@@ -3,198 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<!-- Favicon -->
+<script>document.documentElement.className+=' js';setTimeout(function(){if(!window.__iv)document.documentElement.classList.remove('js')},6000)</script>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <!-- Analytics & ad tracking: add your IDs in tracking.js -->
 <script src="tracking.js" data-page="Index"></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "ivia solutions", "description": "Full-service digital marketing agency: Meta Ads, Google Ads, Amazon & marketplace advertising, creative, SEO and analytics.", "email": "hello@iviasolutions.in", "telephone": "+918607070505", "areaServed": "IN", "url": "https://www.iviasolutions.in/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "ivia solutions", "legalName": "IVIA Marketing Solutions LLP", "url": "https://www.iviasolutions.in/", "description": "Full-service digital marketing agency: Meta Ads, Google Ads, Amazon & marketplace advertising, creative, SEO and analytics.", "email": "hello@iviasolutions.in", "telephone": "+918607070505", "areaServed": "IN", "logo": "https://www.iviasolutions.in/favicon.png"}</script>
 <title>ivia solutions | Digital Marketing, Performance Ads &amp; Amazon Growth</title>
 <meta name="description" content="ivia solutions: a full-service digital marketing agency running Meta Ads, Google Ads and Amazon advertising, plus creative, SEO and tracking, for profitable growth.">
 <link rel="canonical" href="https://www.iviasolutions.in/">
-<meta property="og:url" content="https://www.iviasolutions.in/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ivia solutions">
 <meta property="og:title" content="ivia solutions | Digital Marketing, Performance Ads &amp; Amazon Growth">
 <meta property="og:description" content="ivia solutions: a full-service digital marketing agency running Meta Ads, Google Ads and Amazon advertising, plus creative, SEO and tracking, for profitable growth.">
+<meta property="og:url" content="https://www.iviasolutions.in/">
 <meta property="og:image" content="https://www.iviasolutions.in/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0a0a0b">
+<meta name="theme-color" content="#06070C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body data-email="hello@iviasolutions.in" data-wa="https://wa.me/918607070505">
-<canvas id="gl" aria-hidden="true"></canvas>
-<div class="vignette"></div>
-<div id="loader">
-  <div class="sh t"></div><div class="sh b"></div>
-  <div class="ln"></div>
-  <div class="in"><div class="num mono" id="ldNum">000</div><div class="lbl" id="ldLbl" data-to="EVERY CHANNEL. ONE TEAM.">IVIA SOLUTIONS</div></div>
-</div>
-<div id="curtain"><span>ivia</span></div>
+<canvas id="wave" aria-hidden="true"></canvas>
+<div id="loader"><img src="logo-light.png" alt="" width="144" height="96"><div class="bar"><i></i></div><div class="lf"><span>META · GOOGLE · AMAZON</span><span>LOADING <b id="ldN">000</b></span></div></div>
+<div id="curtain"><div class="cl"><i></i><span>ivia</span></div></div>
 <div id="cur"><span></span></div>
 <div id="prog"></div>
-<nav>
-  <a href="index.html" class="logo" data-label="Home"><img src="logo.png" alt="ivia solutions" width="51" height="34"></a>
-  <div class="nav-links"><a href="services.html" class="">Services</a><a href="case-studies.html" class="">Case Studies</a><a href="blog.html" class="">Blog</a><a href="contact.html" class="">Contact</a></div>
-  <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span class="scr">Menu</span><span class="bars"><b></b><b></b></span></button>
-</nav>
+<header class="nav">
+  <a href="index.html" class="logo" data-label="Home"><img src="logo.png" alt="ivia solutions" width="45" height="30"></a>
+  <nav class="nav-links" aria-label="Main"><a href="services.html" class="">Services</a><a href="case-studies.html" class="">Case Studies</a><a href="blog.html" class="">Blog</a><a href="contact.html" class="">Contact</a></nav>
+  <a href="contact.html" class="btn btn-p mag sm nav-cta" data-label="Contact"><span class="bt">Free audit</span><span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><i></i><i></i></button>
+</header>
 <div id="overlay">
-  <ul><li><a class="big" href="index.html" data-stat="1" data-sub="team for every channel" data-label="Home">Home</a></li><li><a class="big" href="services.html" data-stat="9" data-sub="services under one roof" data-label="Services">Services</a></li><li><a class="big" href="case-studies.html" data-stat="₹1Cr+" data-sub="ad spend managed" data-label="Case Studies">Case Studies</a></li><li><a class="big" href="blog.html" data-stat="15" data-sub="in-depth growth guides" data-label="Blog">Blog</a></li><li><a class="big" href="contact.html" data-stat="1 day" data-sub="reply time, or WhatsApp" data-label="Contact">Contact</a></li></ul>
-  <div class="ov-foot"><a href="mailto:hello@iviasolutions.in">hello@iviasolutions.in</a><a href="https://wa.me/918607070505">+91 86070 70505</a><span>Meta · Google · Amazon</span></div>
-  <div class="pv"><b>9</b><small>services</small></div>
+  <ul><li><a class="big" href="index.html" data-label="Home">Home<span>01</span></a></li><li><a class="big" href="services.html" data-label="Services">Services<span>02</span></a></li><li><a class="big" href="case-studies.html" data-label="Case Studies">Case Studies<span>03</span></a></li><li><a class="big" href="blog.html" data-label="Blog">Blog<span>04</span></a></li><li><a class="big" href="contact.html" data-label="Contact">Contact<span>05</span></a></li></ul>
+  <div class="ov-foot"><a href="mailto:hello@iviasolutions.in">hello@iviasolutions.in</a><a href="https://wa.me/918607070505">WhatsApp +91 86070 70505</a><span style="opacity:.6">Meta · Google · Amazon · SEO · Creative</span></div>
 </div>
 <main>
 
-<section class="hero" id="top" data-blob="1.05,0.05,1.0,0">
-  <div class="badge"><svg viewBox="0 0 150 150"><defs><path id="circ" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs><text><textPath href="#circ">FREE GROWTH AUDIT • FREE GROWTH AUDIT • </textPath></text></svg><div class="core">↓</div></div>
+<section class="hero"><div class="aurora"><i></i><i></i><i></i></div><div class="grid-bg"></div>
+  <div class="kcards" aria-hidden="true">
+  <div class="kcard"><small>Avg. ACOS reduction <em>Amazon</em></small><b>−44%</b><svg class="spark" viewBox="0 0 200 34" preserveAspectRatio="none"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs><path d="M0 4 C30 6 40 10 60 12 S95 14 110 20 150 24 170 28 200 30 200 30" stroke="url(#sg)" stroke-width="2.5" fill="none" vector-effect="non-scaling-stroke"/></svg></div>
+  <div class="kcard"><small>Ad spend managed <em>↑</em></small><b>₹1Cr+</b><svg class="spark" viewBox="0 0 200 34" preserveAspectRatio="none"><path d="M0 30 C25 28 40 26 60 22 S90 20 110 15 150 10 170 7 200 3 200 3" stroke="url(#sg)" stroke-width="2.5" fill="none" vector-effect="non-scaling-stroke"/></svg></div>
+  <div class="kcard"><small>One team</small><b>9 services</b><div class="dots3"><span>Meta</span><span>Google</span><span>Amazon</span></div></div>
+</div>
   <div class="wrap">
-    <div class="eyebrow h-in"><i></i>Digital Marketing · Performance · Marketplaces</div>
-    <h1 id="heroTitle"><span class="row r1">Stop burning</span><span class="row r2">budget.</span><span class="row r3 grad">Start scaling.</span></h1>
-    <div class="hero-bottom">
-      <p class="h-in">ivia solutions is a full-service digital marketing agency. We run Meta, Google and Amazon ads, creative, SEO and tracking as one plan, so every rupee is accountable to revenue, not just clicks.</p>
-      <div class="cta-row h-in"><a href="mailto:hello@iviasolutions.in" class="btn btn-p mag" data-cursor="Email"><span class="fill"></span><span class="lbl"><span>Email us ↗</span><span>Email us ↗</span></span></a><a href="https://wa.me/918607070505" class="btn btn-g mag" data-cursor="Chat"><span class="fill"></span><span class="lbl"><span>WhatsApp ↗</span><span>WhatsApp ↗</span></span></a><a href="services.html" class="btn btn-g mag" data-cursor="Explore" data-label="Services"><span class="fill"></span><span class="lbl"><span>Our services →</span><span>Our services →</span></span></a></div>
-    </div>
+    <div class="pill-top" data-in><b>ivia</b>Meta · Google · Amazon · one team</div>
+    <h1>Stop burning budget. Start <span class="hl">scaling.</span></h1>
+    <div class="hero-row"><div data-in>
+      <p>ivia solutions is a full-service digital marketing agency. We run Meta, Google and Amazon ads, creative, SEO and tracking as one plan, so every rupee is accountable to revenue, not just clicks.</p>
+      <div class="acts"><a href="contact.html" class="btn btn-p mag " data-cursor="Start" data-label="Contact"><span class="bt">Get a free audit</span><span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a><a href="services.html" class="btn btn-o mag " data-cursor="Explore" data-label="Services"><span class="bt">Our services</span><span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a></div>
+    </div></div>
+    <div class="ticker-wrap" data-in style="margin-top:60px"><span class="tl">Channels we run</span><div class="ticker"><div class="tk"><span class="chip"><i style="background:#7B61FF"></i>Meta</span><span class="chip"><i style="background:#4F8CFF"></i>Google</span><span class="chip"><i style="background:#22D3EE"></i>Amazon</span><span class="chip"><i style="background:#FF5470"></i>YouTube</span><span class="chip"><i style="background:#C26BFF"></i>Instagram</span><span class="chip"><i style="background:#FFC94D"></i>Flipkart</span><span class="chip"><i style="background:#3EE6A8"></i>Shopify</span><span class="chip"><i style="background:#FF9F43"></i>GA4</span><span class="chip"><i style="background:#5AA9FF"></i>Looker Studio</span><span class="chip"><i style="background:#7DD3FC"></i>Helium 10</span><span class="chip"><i style="background:#7B61FF"></i>Meta</span><span class="chip"><i style="background:#4F8CFF"></i>Google</span><span class="chip"><i style="background:#22D3EE"></i>Amazon</span><span class="chip"><i style="background:#FF5470"></i>YouTube</span><span class="chip"><i style="background:#C26BFF"></i>Instagram</span><span class="chip"><i style="background:#FFC94D"></i>Flipkart</span><span class="chip"><i style="background:#3EE6A8"></i>Shopify</span><span class="chip"><i style="background:#FF9F43"></i>GA4</span><span class="chip"><i style="background:#5AA9FF"></i>Looker Studio</span><span class="chip"><i style="background:#7DD3FC"></i>Helium 10</span></div></div></div>
   </div>
 </section>
 
-<div class="mq" data-blob="-1.6,0.3,0.6,1">
-  <div class="mq-row" id="mq1"><span>Meta Ads</span><span>Google Ads</span><span>Amazon Ads</span><span>YouTube</span><span>Instagram</span><span>Flipkart</span><span>Meta Ads</span><span>Google Ads</span><span>Amazon Ads</span><span>YouTube</span><span>Instagram</span><span>Flipkart</span></div>
-  <div class="mq-row o"><span>Performance Marketing</span><span>Creative</span><span>SEO</span><span>Marketplaces</span><span>Analytics</span><span>Performance Marketing</span><span>Creative</span><span>SEO</span><span>Marketplaces</span><span>Analytics</span></div>
-</div>
+<section class="statement"><div class="wrap">
+  <div class="kick"><i></i>Who we are</div>
+  <p>We're a full-service digital marketing agency. We run <span class="inl"><i style="background:#7B61FF"></i>Meta</span> <span class="inl"><i style="background:#4F8CFF"></i>Google</span> and <span class="inl"><i style="background:#22D3EE"></i>Amazon</span> ads, creative, SEO and tracking as one plan, measured on the only number that matters: profitable growth.</p>
+</div></section>
 
-<section class="stats-band"><div class="wrap"><div class="stats-grid">
-  <div class="stat"><b><em class="cnt" data-to="44" data-suf="%">0%</em></b><p>Average ACOS reduction across managed Amazon accounts</p></div>
-  <div class="stat"><b><em class="cnt" data-to="65" data-suf="%">0%</em></b><p>Average ROAS improvement post-restructure</p></div>
-  <div class="stat"><b>₹<em>1Cr</em>+</b><p>Total ad spend under active management</p></div>
-  <div class="stat"><b><em class="cnt" data-to="9">0</em></b><p>Services under one roof: ads, creative, SEO, web &amp; tracking</p></div>
+<section class="panel stats"><div class="glow" style="width:620px;height:620px;left:-220px;top:-320px;background:rgba(123,97,255,.4)"></div><div class="glow" style="width:520px;height:520px;right:-200px;bottom:-300px;background:rgba(34,211,238,.25)"></div><div class="wrap"><div class="stats-g">
+  <div><b><em class="cnt" data-to="44" data-suf="%">0%</em></b><p>Average ACOS reduction across managed Amazon accounts</p></div>
+  <div><b><em class="cnt" data-to="65" data-suf="%">0%</em></b><p>Average ROAS improvement after restructure</p></div>
+  <div><b>₹<em>1Cr</em>+</b><p>Total ad spend under active management</p></div>
+  <div><b><em class="cnt" data-to="9">0</em></b><p>Services under one roof: ads, creative, SEO, web &amp; tracking</p></div>
 </div></div></section>
 
-<section class="cine" data-blob="0,0,1.6,2">
-  <div class="cine-stage">
-    <div class="layer l1"><h2 id="cineA">Every<br><span class="grad">rupee</span><br>counts.</h2></div>
-    <div class="layer l2"><div class="big" id="cineNum" data-to="44">0%</div><p>Average ACOS reduction across managed Amazon accounts</p></div>
-    <div class="layer l3">
-      <div class="formula" id="formula"><span>Audience</span><span class="op">×</span><span>Creative</span><span class="op">×</span><span>Offer</span><span class="op">=</span><span class="grad">Growth</span></div>
-      <p>Every rupee planned. Never guessed.</p>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="services" data-blob="1.4,-0.2,0.8,1"><div class="wrap">
-  <div class="kicker">What we do</div>
-  <h2 class="title split">One agency for <span class="grad">every channel.</span></h2>
-  <p class="lead fade">Performance ads, creative, SEO, websites and tracking, planned together and measured together, so nothing works against anything else.</p>
-  <div class="svc-grid nine"><div class="svc" data-cursor="Meta"><span class="n">01</span><span class="ico"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M3 15c0-4 2.2-8 4.8-8 2.2 0 3.6 2.6 4.2 4 .6-1.4 2-4 4.2-4 2.6 0 4.8 4 4.8 8 0 2-1 3-2.3 3-2.3 0-4.4-4.4-6.7-8.4C9.7 13.6 7.6 18 5.3 18 4 18 3 17 3 15z"/></svg></span><h3>Meta Ads</h3><p>Facebook and Instagram campaigns built on consolidated structures, broad targeting and a steady creative-testing rhythm, optimised for purchases or qualified leads.</p><div class="tag">Demand creation</div><span class="shine"></span></div><div class="svc" data-cursor="Google"><span class="n">02</span><span class="ico"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M20.5 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h4.8a4.2 4.2 0 0 1-1.8 2.7v2.2h2.9c1.7-1.6 2.6-3.9 2.6-6.6z"/><path d="M12 21c2.4 0 4.5-.8 5.9-2.2L15 16.6c-.8.5-1.8.9-3 .9-2.3 0-4.3-1.6-5-3.7H4v2.3A9 9 0 0 0 12 21z"/><path d="M7 13.8a5.4 5.4 0 0 1 0-3.6V7.9H4a9 9 0 0 0 0 8.2z"/><path d="M12 6.5c1.3 0 2.5.5 3.4 1.3L18 5.3A9 9 0 0 0 4 7.9l3 2.3c.7-2.1 2.7-3.7 5-3.7z"/></svg></span><h3>Google Ads</h3><p>Search, Shopping, Performance Max and YouTube: capturing high-intent demand with clean conversion data, tight negatives and brand-safe guardrails.</p><div class="tag">Intent capture</div><span class="shine"></span></div><div class="svc" data-cursor="Amazon"><span class="n">03</span><span class="ico"><svg viewBox="0 0 24 24" width="30" height="30"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 7H6"/></svg></span><h3>Amazon & Marketplaces</h3><p>Our original specialism: 15-point audits, three-tier campaign architecture, calculated bids and launch playbooks for Amazon and other marketplaces.</p><div class="tag">Marketplace growth</div><span class="shine"></span></div><div class="svc" data-cursor="Create"><span class="n">04</span><span class="ico"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M4 20l4-1 11-11-3-3L5 16zM14 6l3 3"/></svg></span><h3>Creative & Content</h3><p>Hook-led video, UGC-style ads, statics and listing images, produced in monthly sprints and tested properly so winners are found, not guessed.</p><div class="tag">Creative engine</div><span class="shine"></span></div><div class="svc" data-cursor="Social"><span class="n">05</span><span class="ico"><svg viewBox="0 0 24 24" width="30" height="30"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 4.5a3 3 0 0 1 0 6M18 14c2 .8 3 2.9 3 6"/></svg></span><h3>Social Media Management</h3><p>Content calendars, posting and community management for Instagram, LinkedIn and YouTube, aligned with what your paid campaigns are saying.</p><div class="tag">Always-on brand</div><span class="shine"></span></div><div class="svc" data-cursor="SEO"><span class="n">06</span><span class="ico"><svg viewBox="0 0 24 24" width="30" height="30"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><h3>SEO & Content</h3><p>Technical fixes, keyword strategy, on-page optimisation and content that compounds, so you are not renting every visitor from an ad platform.</p><div class="tag">Compounding traffic</div><span class="shine"></span></div><div class="svc" data-cursor="Build"><span class="n">07</span><span class="ico"><svg viewBox="0 0 24 24" width="30" height="30"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></span><h3>Websites & Landing Pages</h3><p>Fast, conversion-focused landing pages and websites, with A/B testing so the traffic you pay for actually converts.</p><div class="tag">Conversion</div><span class="shine"></span></div><div class="svc" data-cursor="Track"><span class="n">08</span><span class="ico"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></span><h3>Analytics & Tracking</h3><p>GA4, Tag Manager, Meta Conversions API, Google enhanced conversions and Looker Studio dashboards: one honest view of what is working.</p><div class="tag">Measurement</div><span class="shine"></span></div><div class="svc" data-cursor="Retain"><span class="n">09</span><span class="ico"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span><h3>Email & WhatsApp Marketing</h3><p>Welcome, abandoned-cart and win-back flows plus segmented campaigns that turn first-time buyers into repeat customers.</p><div class="tag">Retention</div><span class="shine"></span></div></div>
-  <div class="more"><a href="services.html" class="btn btn-g mag" data-cursor="Explore" data-label="Services"><span class="fill"></span><span class="lbl"><span>Explore all services →</span><span>Explore all services →</span></span></a></div>
+<section class="sec" id="services"><div class="wrap">
+  <div class="head"><div><div class="kick"><i></i>What we do</div><h2 class="h2 rw">One agency for <span class="hl">every channel.</span></h2></div>
+  <p class="lead fu" style="margin:0 0 6px">Performance ads, creative, SEO, websites and tracking, planned together and measured together, so nothing works against anything else.</p></div>
+  <div class="bento"><a class="bx big" href="services.html#meta" data-cursor="Explore" data-label="Services"><span class="num">01</span><span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="bi ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c0-4 2.2-8 4.8-8 2.2 0 3.6 2.6 4.2 4 .6-1.4 2-4 4.2-4 2.6 0 4.8 4 4.8 8 0 2-1 3-2.3 3-2.3 0-4.4-4.4-6.7-8.4C9.7 13.6 7.6 18 5.3 18 4 18 3 17 3 15z"/></svg></span><h3>Meta Ads</h3><p>Facebook and Instagram campaigns built on consolidated structures, broad targeting and a steady creative-testing rhythm, optimised for purchases or qualified leads.</p><div class="tags"><span>Facebook</span><span>Instagram</span><span>Reels</span></div><svg class="vis" viewBox="0 0 300 260" fill="none"><defs><linearGradient id="vg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset=".55" stop-color="#4F8CFF"/><stop offset="1" stop-color="#22D3EE"/></linearGradient></defs>
+<rect x="70" y="20" width="170" height="210" rx="22" transform="rotate(8 155 125)" stroke="url(#vg)" stroke-opacity=".35" stroke-width="1.5"/>
+<rect x="50" y="30" width="170" height="210" rx="22" stroke="url(#vg)" stroke-opacity=".6" stroke-width="1.5" fill="rgba(123,97,255,.06)"/>
+<rect x="66" y="48" width="138" height="96" rx="12" fill="url(#vg)" opacity=".85"/><path d="M128 82l22 14-22 14z" fill="#fff"/>
+<rect x="66" y="158" width="100" height="10" rx="5" fill="#fff" opacity=".5"/><rect x="66" y="178" width="70" height="10" rx="5" fill="#fff" opacity=".3"/>
+<rect x="66" y="200" width="56" height="22" rx="11" fill="url(#vg)"/></svg></a><a class="bx wide" href="services.html#google" data-cursor="Explore" data-label="Services"><span class="num">02</span><span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="bi ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h4.8a4.2 4.2 0 0 1-1.8 2.7v2.2h2.9c1.7-1.6 2.6-3.9 2.6-6.6z"/><path d="M12 21c2.4 0 4.5-.8 5.9-2.2L15 16.6c-.8.5-1.8.9-3 .9-2.3 0-4.3-1.6-5-3.7H4v2.3A9 9 0 0 0 12 21z"/><path d="M7 13.8a5.4 5.4 0 0 1 0-3.6V7.9H4a9 9 0 0 0 0 8.2z"/><path d="M12 6.5c1.3 0 2.5.5 3.4 1.3L18 5.3A9 9 0 0 0 4 7.9l3 2.3c.7-2.1 2.7-3.7 5-3.7z"/></svg></span><h3>Google Ads</h3><p>Search, Shopping, Performance Max and YouTube: capturing high-intent demand with clean conversion data, tight negatives and brand-safe guardrails.</p><div class="tags"><span>Search</span><span>Shopping</span><span>PMax</span><span>YouTube</span></div></a><a class="bx wide" href="services.html#amazon" data-cursor="Explore" data-label="Services"><span class="num">03</span><span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="bi ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 7H6"/></svg></span><h3>Amazon & Marketplaces</h3><p>Our original specialism: 15-point audits, three-tier campaign architecture, calculated bids and launch playbooks for Amazon and other marketplaces.</p><div class="tags"><span>Amazon</span><span>Flipkart</span><span>More</span></div></a><a class="bx " href="services.html#creative" data-cursor="Explore" data-label="Services"><span class="num">04</span><span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="bi ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1 11-11-3-3L5 16zM14 6l3 3"/></svg></span><h3>Creative & Content</h3><p>Hook-led video, UGC-style ads, statics and listing images, produced in monthly sprints and tested properly so winners are found, not guessed.</p><div class="tags"><span>Video</span><span>UGC</span><span>Static</span></div></a><a class="bx " href="services.html#social" data-cursor="Explore" data-label="Services"><span class="num">05</span><span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="bi ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 4.5a3 3 0 0 1 0 6M18 14c2 .8 3 2.9 3 6"/></svg></span><h3>Social Media Management</h3><p>Content calendars, posting and community management for Instagram, LinkedIn and YouTube, aligned with what your paid campaigns are saying.</p><div class="tags"><span>Instagram</span><span>LinkedIn</span><span>YouTube</span></div></a><a class="bx " href="services.html#seo" data-cursor="Explore" data-label="Services"><span class="num">06</span><span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="bi ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><h3>SEO & Content</h3><p>Technical fixes, keyword strategy, on-page optimisation and content that compounds, so you are not renting every visitor from an ad platform.</p><div class="tags"><span>Technical</span><span>Content</span><span>Local</span></div></a><a class="bx " href="services.html#web" data-cursor="Explore" data-label="Services"><span class="num">07</span><span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="bi ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></span><h3>Websites & Landing Pages</h3><p>Fast, conversion-focused landing pages and websites, with A/B testing so the traffic you pay for actually converts.</p><div class="tags"><span>Shopify</span><span>WordPress</span><span>CRO</span></div></a><a class="bx wide" href="services.html#tracking" data-cursor="Explore" data-label="Services"><span class="num">08</span><span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="bi ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></span><h3>Analytics & Tracking</h3><p>GA4, Tag Manager, Meta Conversions API, Google enhanced conversions and Looker Studio dashboards: one honest view of what is working.</p><div class="tags"><span>GA4</span><span>CAPI</span><span>Dashboards</span></div></a><a class="bx wide" href="services.html#lifecycle" data-cursor="Explore" data-label="Services"><span class="num">09</span><span class="go"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="bi ico"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></span><h3>Email & WhatsApp Marketing</h3><p>Welcome, abandoned-cart and win-back flows plus segmented campaigns that turn first-time buyers into repeat customers.</p><div class="tags"><span>Email</span><span>WhatsApp</span><span>Flows</span></div></a></div>
 </div></section>
 
-<section class="dsh" data-blob="0,-1.2,1.1,0">
-  <div class="dsh-stage">
-    <h2>Every channel on <span class="grad">one screen.</span></h2>
-    <div class="dash" id="dash">
-      <div class="dash-top mono"><span>IVIA COMMAND CENTER</span><span class="ok">● SAMPLE VIEW</span></div>
-      <div class="d-grid">
-        <div class="kp"><b data-from="1.4" data-to="3.9" data-dec="1" data-suf="×">1.4×</b><small>Blended ROAS</small></div>
-        <div class="kp"><b data-from="1240" data-to="610" data-pre="₹" data-fmt="in">₹1,240</b><small>Meta cost per purchase</small></div>
-        <div class="kp"><b data-from="70" data-to="31" data-suf="%">70%</b><small>Amazon ACOS</small></div>
-        <div class="kp"><b data-from="2.1" data-to="5.8" data-dec="1" data-suf="%">2.1%</b><small>Google conv. rate</small></div>
-      </div>
-      <div class="d-chart" id="dChart"></div>
-    </div>
-  </div>
-</section>
-
-<section class="proc" id="process" data-blob="-1.3,0.6,0.7,2">
-  <div class="proc-pin">
-    <div class="wrap"><div class="kicker">How it works</div><h2 class="title split">Audit first. <span class="grad">Then scale.</span></h2></div>
-    <div class="proc-track" id="pTrack">
-      <div class="proc-line"><svg viewBox="0 0 1000 60" preserveAspectRatio="none"><path id="pPath" d="M0,30 C80,0 160,60 240,30 S400,0 480,30 640,60 720,30 880,0 1000,30" fill="none" stroke="#ff5a1f" stroke-width="2" vector-effect="non-scaling-stroke"/></svg></div>
-      <div class="step"><span class="num">01</span><div><h3>Discovery Call</h3><p>30 mins on your products, margins, goals and the channels you run today.</p></div></div><div class="step"><span class="num">02</span><div><h3>Growth Audit</h3><p>Tracking, ad accounts, creative and landing pages reviewed. Written findings in 5–7 days.</p></div></div><div class="step"><span class="num">03</span><div><h3>Strategy & Channel Plan</h3><p>Agree KPIs, budgets and which channel does which job before any money moves.</p></div></div><div class="step"><span class="num">04</span><div><h3>Build & Tracking Setup</h3><p>Campaigns, tracking and dashboards built in parallel, with no disruption to what already works.</p></div></div><div class="step"><span class="num">05</span><div><h3>Weekly Optimisation</h3><p>Bids, budgets, negatives and creative rotation, with every change logged in plain language.</p></div></div><div class="step hot"><span class="num">06</span><div><h3>Monthly Strategy Review</h3><p>Blended performance vs targets, creative learnings and next month's plan.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" data-blob="1.3,-0.4,0.7,1"><div class="wrap audit-wrap">
-  <div class="ring-box" id="ringBox">
-    <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="88" fill="none" stroke="rgba(239,235,228,.08)" stroke-width="4"/><circle id="ring" cx="100" cy="100" r="88" fill="none" stroke="#ff5a1f" stroke-width="4" stroke-linecap="round" stroke-dasharray="553" stroke-dashoffset="553"/></svg>
-    <div class="c"><b id="ringNum">0</b><span>point growth audit</span></div>
-  </div>
+<section class="sec"><div class="wrap orbit-wrap">
   <div>
-    <div class="kicker">The audit</div>
-    <h2 class="title split" style="font-size:clamp(36px,4.6vw,68px);margin-bottom:34px">We don't touch your budget until we <span class="grad">understand it.</span></h2>
-    <div class="checks"><div class="chk"><b>✓</b>Tracking accuracy: Pixel, CAPI, GA4, Google Ads</div><div class="chk"><b>✓</b>Account & campaign structure</div><div class="chk"><b>✓</b>Wasted spend: search terms & placements</div><div class="chk"><b>✓</b>Audience overlap & targeting</div><div class="chk"><b>✓</b>Creative fatigue & testing cadence</div><div class="chk"><b>✓</b>Landing page & listing conversion rate</div><div class="chk"><b>✓</b>Attribution & reporting setup</div><div class="chk"><b>✓</b>Negative keyword coverage</div><div class="chk"><b>✓</b>Budget split across channels</div><div class="chk"><b>✓</b>Bid strategy & learning-phase health</div></div>
+    <div class="kick"><i></i>Why ivia</div>
+    <h2 class="h2 rw">One team. <span class="hl">Every channel.</span></h2>
+    <p class="lead fu">Most brands juggle an Amazon agency, a Meta freelancer and someone for Google, and nobody owns the total. We do.</p>
+    <div class="reasons2 fu-stag"><div class="rs"><span>01</span><div><h4>Audit before every rupee</h4><p>We diagnose before we prescribe. No spending until we know what's broken, on every channel, and why.</p></div></div><div class="rs"><span>02</span><div><h4>One plan across every channel</h4><p>Meta, Google and Amazon run as one strategy and are judged on blended results, not three agencies defending three dashboards.</p></div></div><div class="rs"><span>03</span><div><h4>Weekly action logs</h4><p>Every change documented in plain language. You always know what happened and why.</p></div></div><div class="rs"><span>04</span><div><h4>Named manager · direct WhatsApp</h4><p>One person owns your account. No rotating teams, no ticket queues.</p></div></div></div>
   </div>
+  <div class="orbit" data-cursor="Every channel"><div class="ring r1"><span class="slot"><span class="chipo"><i style="background:#7B61FF"></i>Meta</span></span><span class="slot"><span class="chipo"><i style="background:#4F8CFF"></i>Google</span></span><span class="slot"><span class="chipo"><i style="background:#22D3EE"></i>Amazon</span></span></div><div class="ring r2"><span class="slot"><span class="chipo"><i style="background:#FF5470"></i>YouTube</span></span><span class="slot"><span class="chipo"><i style="background:#C26BFF"></i>Instagram</span></span><span class="slot"><span class="chipo"><i style="background:#FFC94D"></i>Flipkart</span></span><span class="slot"><span class="chipo"><i style="background:#3EE6A8"></i>Shopify</span></span></div><div class="ring r3"><span class="slot"><span class="chipo"><i style="background:#FF9F43"></i>GA4</span></span><span class="slot"><span class="chipo"><i style="background:#3EE6A8"></i>SEO</span></span><span class="slot"><span class="chipo"><i style="background:#A594FF"></i>Email</span></span><span class="slot"><span class="chipo"><i style="background:#3EE6A8"></i>WhatsApp</span></span><span class="slot"><span class="chipo"><i style="background:#FF7AC6"></i>Creative</span></span><span class="slot"><span class="chipo"><i style="background:#5AA9FF"></i>Looker Studio</span></span></div><div class="pulse"></div><div class="core"><img src="logo-white.png" alt="" width="90" height="60"></div></div>
 </div></section>
 
-<section class="sec" id="cases" data-blob="1.5,0.4,0.6,1"><div class="wrap">
-  <div class="head-row" style="margin-bottom:70px"><div><div class="kicker">Case studies</div><h2 class="title split">Real accounts. <span class="grad">Real results.</span></h2></div>
-  <p class="lead fade" style="margin:0">Anonymized results from managed Amazon accounts. Relative improvements from baseline, each backed by a documented implementation timeline.</p></div>
-  <div class="stack"><div class="case c1"><div><div class="meta">Amazon · Multi-SKU Portfolio · India</div><h3>35% TACOS reduction across 40+ ASINs in 90 days</h3><p class="prob">Four years of unstructured growth: 110+ campaigns, duplicate keywords everywhere. Blended ACOS looked fine, but SKU-level analysis revealed 30% of spend funding products with negative contribution margins.</p></div><div class="mets"><div class="met"><b>31→20%</b><small>TACOS</small></div><div class="met"><b class=cnt data-to="48" data-pre="+" data-suf="%">+48%</b><small>Hero SKU revenue</small></div><div class="met"><b class=cnt data-to="80" data-pre="₹" data-suf="K">₹80K</b><small>Recovered / month</small></div><div class="met"><b>110→58</b><small>Campaigns</small></div></div></div><div class="case c2"><div><div class="meta">Amazon · Home Lighting · India</div><h3>44% ACOS reduction via full restructure</h3><p class="prob">18-SKU account rebuilt: 380+ negatives, SKU isolation, placement modifiers per product.</p></div><div class="mets"><div class="met"><b>70→39%</b><small>ACOS</small></div><div class="met"><b>48→31%</b><small>TACOS</small></div><div class="met"><b class=cnt data-to="380" data-suf="+">380+</b><small>Negatives added</small></div><div class="met"><b class=cnt data-to="18">18</b><small>SKUs rebuilt</small></div></div></div><div class="case c3"><div><div class="meta">Amazon · Pet Supplies · India</div><h3>80% revenue scale without ACOS increase</h3><p class="prob">Auto relaunched with 200-term negative pre-load. Keywords grew 35→112. ASIN targeting added.</p></div><div class="mets"><div class="met"><b class=cnt data-to="80" data-pre="+" data-suf="%">+80%</b><small>Revenue</small></div><div class="met"><b>35→112</b><small>Keywords</small></div><div class="met"><b class=cnt data-to="200">200</b><small>Negative pre-load</small></div><div class="met"><b>41→38%</b><small>ACOS</small></div></div></div><div class="case c4"><div><div class="meta">Amazon · Skincare D2C · India</div><h3>12 page-1 keywords in 75 days from zero</h3><p class="prob">Launch playbook + Vine coordination drove CVR from 4%→11% and TACOS from 65%→28%.</p></div><div class="mets"><div class="met"><b>0→12</b><small>Page-1 keywords</small></div><div class="met"><b>65→28%</b><small>TACOS</small></div><div class="met"><b>4→11%</b><small>CVR</small></div><div class="met"><b class=cnt data-to="75">75</b><small>Days</small></div></div></div></div>
-  <div class="more"><a href="case-studies.html" class="btn btn-g mag" data-cursor="Results" data-label="Case Studies"><span class="fill"></span><span class="lbl"><span>View all case studies →</span><span>View all case studies →</span></span></a></div>
-</div></section>
-
-<section class="sec" data-blob="-1.5,-0.3,0.7,2"><div class="wrap">
-  <div class="kicker">Why ivia</div>
-  <h2 class="title split" style="margin-bottom:70px">Performance marketing, <span class="grad">not account-sitting.</span></h2>
-  <div class="why">
-    <div class="bot-wrap"><div class="bubble"><span id="bubbleTxt"></span><span class="caret"></span></div><svg class="bot" id="bot" viewBox="0 0 300 300" data-cursor="Poke" role="img" aria-label="ivia bot" data-lines="Hi! I'm the ivia bot.|Meta, Google, Amazon: one plan.|Tracking checked. Twice.|Wasted spend detected. Fixing.|New creative in testing…|Poke me again.">
-  <g id="botBody">
-    <line x1="150" y1="58" x2="150" y2="28" stroke="#8f8a82" stroke-width="4"/>
-    <circle id="antenna" cx="150" cy="24" r="10" fill="#d9c7a3"/>
-    <rect x="60" y="58" width="180" height="150" rx="48" fill="#ff5a1f"/>
-    <rect x="80" y="82" width="140" height="96" rx="34" fill="#0a0a0b"/>
-    <g id="eyes"><g><ellipse cx="120" cy="128" rx="17" ry="20" fill="#fff"/><circle class="pupil" cx="120" cy="128" r="8" fill="#0a0a0b"/></g><g><ellipse cx="180" cy="128" rx="17" ry="20" fill="#fff"/><circle class="pupil" cx="180" cy="128" r="8" fill="#0a0a0b"/></g></g>
-    <path id="mouth" d="M128,160 Q150,170 172,160" stroke="#d9c7a3" stroke-width="5" fill="none" stroke-linecap="round"/>
-    <rect x="44" y="110" width="16" height="44" rx="8" fill="#c2410c"/><rect x="240" y="110" width="16" height="44" rx="8" fill="#c2410c"/>
-    <rect x="105" y="208" width="90" height="56" rx="20" fill="#1f1c1a"/><rect x="120" y="222" width="60" height="8" rx="4" fill="#d9c7a3" id="meter"/>
-  </g>
-  <ellipse cx="150" cy="286" rx="70" ry="8" fill="rgba(255,90,31,.25)" id="shadow"/>
-</svg></div>
-    <div class="reasons"><div class="reason"><span class="ri"><svg viewBox="0 0 24 24" width="30" height="30"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></svg></span><div><h4>Audit before every rupee</h4><p>We diagnose before we prescribe. No spending until we know what's broken, on every channel, and why.</p></div></div><div class="reason"><span class="ri"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></svg></span><div><h4>One plan across every channel</h4><p>Meta, Google and Amazon run as one strategy and are judged on blended results, not three agencies defending three dashboards.</p></div></div><div class="reason"><span class="ri"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><div><h4>Weekly action logs</h4><p>Every change documented in plain language. You always know what happened and why.</p></div></div><div class="reason"><span class="ri"><svg viewBox="0 0 24 24" width="30" height="30"><path d="M7 11l4-4 3 3 3-3 4 4-6 6-2-2-2 2z M3 11l4 0"/></svg></span><div><h4>Named manager · direct WhatsApp</h4><p>One person owns your account. No rotating teams, no ticket queues.</p></div></div></div>
-  </div>
-</div></section>
-
-<section class="sec" data-blob="0,1.3,0.9,0" style="padding-bottom:80px">
-  <div class="wrap"><div class="kicker">Client feedback</div><h2 class="title split" style="margin-bottom:60px">What brands say about <span class="grad">working with us.</span></h2></div>
-  <div class="tst-track" id="tTrack" data-cursor="Drag"><div class="tcard"><div class="st">★★★★★</div><blockquote>“They took our ACOS from 68% to 34% in under 90 days. The weekly action log meant I always knew what changed and why. That transparency is genuinely rare.”</blockquote><div class="who"><div class="av">RK</div><div>R. Kumar<small>Founder, Home Lighting Brand · India</small></div></div></div><div class="tcard"><div class="st">★★★★★</div><blockquote>“We'd been burning ₹40,000/month on irrelevant search terms for over a year. The audit alone was worth it. The restructure that followed doubled our ROAS within two months.”</blockquote><div class="who"><div class="av">PS</div><div>P. Sharma<small>Brand Manager, Office Products</small></div></div></div><div class="tcard"><div class="st">★★★★★</div><blockquote>“Our launch went page 4 to page 1 for 12 keywords in 75 days. The playbook was methodical and every milestone was clear. Now scaling across two marketplaces.”</blockquote><div class="who"><div class="av">AP</div><div>A. Patel<small>Co-founder, Skincare Brand · India</small></div></div></div></div>
-  <div class="wrap"><div class="chips"><span class="chip">Meta</span><span class="chip">Google</span><span class="chip">Amazon</span><span class="chip">YouTube</span><span class="chip">Instagram</span><span class="chip">Flipkart</span><span class="chip">GA4</span><span class="chip">Shopify</span><span class="chip">Looker Studio</span><span class="chip">Helium 10</span></div></div>
-</section>
-
-<section class="sec" id="blog" data-blob="1.4,0.2,0.7,1"><div class="wrap">
-  <div class="head-row"><div><div class="kicker">From the blog</div><h2 class="title split">Growth <span class="grad">insights.</span></h2></div>
-  <a href="blog.html" class="btn btn-g mag" data-cursor="Blog" data-label="Blog"><span class="fill"></span><span class="lbl"><span>View all posts →</span><span>View all posts →</span></span></a></div>
-  <div class="blog"><a class="post" href="blog-full-funnel-d2c.html" data-cat="Strategy" data-cursor="Read" data-label="Strategy"><div class="top"><span class="cat">Strategy</span><span class="rt">4 min</span></div><h4>Amazon + Meta + Google: A Full-Funnel Plan for D2C Brands</h4><p>Amazon, Meta and Google each do a different job. How they work together, how to split budget, and how to measure the halo between them.</p><span class="go">→</span></a><a class="post" href="blog-meta-ads-structure.html" data-cat="Meta Ads" data-cursor="Read" data-label="Meta Ads"><div class="top"><span class="cat">Meta Ads</span><span class="rt">4 min</span></div><h4>Meta Ads Structure: Why Fewer Campaigns Beat More Targeting</h4><p>Interest stacks and a dozen ad sets feel like control. In practice they starve the algorithm. Here is the consolidated structure that wins.</p><span class="go">→</span></a><a class="post" href="blog-campaign-structure.html" data-cat="Amazon" data-cursor="Read" data-label="Amazon"><div class="top"><span class="cat">Amazon · Strategy</span><span class="rt">9 min read</span></div><h4>Amazon PPC 101: Campaign Structure That Actually Scales</h4><p>Most sellers build a flat account and wonder why ACOS won't budge. Learn the three-tier architecture that actually scales.</p><span class="go">→</span></a></div>
-</div></section>
-
-<section class="cta" id="contact-cta" data-blob="0,0,2.2,2">
-  <div class="cta-stage">
-    <div class="cta-fill" id="ctaFill"></div>
-    <div class="cta-in">
-      <h2 id="ctaTitle">Stop guessing.<br>Start growing.</h2>
-      <p>Every engagement starts with a no-obligation growth audit. See exactly where your budget is going, on every channel, and what it takes to make every rupee work harder.</p>
-      <div class="cta-row"><a href="mailto:hello@iviasolutions.in" class="btn btn-p mag" data-cursor="Email"><span class="fill"></span><span class="lbl"><span>Get your free audit ↗</span><span>Get your free audit ↗</span></span></a><a href="https://wa.me/918607070505" class="btn btn-g mag" data-cursor="Chat"><span class="fill"></span><span class="lbl"><span>WhatsApp us ↗</span><span>WhatsApp us ↗</span></span></a></div>
+<section class="cc"><div class="cc-stage">
+  <div class="wrap" style="text-align:center"><div class="kick"><i></i>Command center</div><h2 class="h2 rw" style="margin:0 auto">Every channel on <span class="hl">one screen.</span></h2></div>
+  <div class="dash2">
+  <aside><div class="brand"><img src="logo.png" alt="" width="30" height="20">REPORTING</div>
+    <div class="ch on"><i style="background:linear-gradient(135deg,#7B61FF,#22D3EE)"></i>All channels</div>
+    <div class="ch"><i style="background:#7B61FF"></i>Meta Ads<em>▲</em></div><div class="ch"><i style="background:#4F8CFF"></i>Google Ads<em>▲</em></div>
+    <div class="ch"><i style="background:#22D3EE"></i>Amazon Ads<em>▲</em></div><div class="ch"><i style="background:#A594FF"></i>Email &amp; WhatsApp</div></aside>
+  <div class="main">
+    <div class="top"><b>Blended performance</b><span class="sample">SAMPLE VIEW</span></div>
+    <div class="kpis">
+      <div class="kp"><small>Blended ROAS</small><b data-from="1.4" data-to="3.9" data-dec="1" data-suf="×">1.4×</b></div>
+      <div class="kp"><small>Meta cost / purchase</small><b data-from="1240" data-to="610" data-pre="₹" data-fmt="in">₹1,240</b></div>
+      <div class="kp"><small>Amazon ACOS</small><b data-from="70" data-to="31" data-suf="%">70%</b></div>
+      <div class="kp"><small>Google conv. rate</small><b data-from="2.1" data-to="5.8" data-dec="1" data-suf="%">2.1%</b></div>
     </div>
+    <div class="chart"><svg viewBox="0 0 600 200" preserveAspectRatio="none">
+<defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7B61FF" stop-opacity=".35"/><stop offset="1" stop-color="#7B61FF" stop-opacity="0"/></linearGradient></defs>
+<g stroke="rgba(255,255,255,.06)" stroke-width="1"><path d="M0 50H600M0 100H600M0 150H600" vector-effect="non-scaling-stroke"/></g>
+<path class="area" d="M0 168 C60 160 90 150 150 140 S250 120 300 104 400 80 450 66 560 40 600 30 L600 200 L0 200Z" fill="url(#ag)"/>
+<path class="ln" d="M0 168 C60 160 90 150 150 140 S250 120 300 104 400 80 450 66 560 40 600 30" stroke="#A594FF" stroke-width="3" fill="none" vector-effect="non-scaling-stroke"/>
+<path class="ln" d="M0 178 C70 172 110 168 160 160 S260 146 310 136 410 120 460 106 560 88 600 80" stroke="#4F8CFF" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"/>
+<path class="ln" d="M0 186 C80 184 120 178 170 174 S270 160 320 152 420 140 470 128 560 116 600 108" stroke="#22D3EE" stroke-width="2" fill="none" vector-effect="non-scaling-stroke"/>
+</svg><div class="lbls"><span>W1</span><span>W2</span><span>W3</span><span>W4</span><span>W5</span><span>W6</span><span>W7</span><span>W8</span></div></div>
+    <div class="legend"><span><i style="background:#A594FF"></i>Blended revenue</span><span><i style="background:#4F8CFF"></i>Google</span><span><i style="background:#22D3EE"></i>Amazon</span></div>
   </div>
-</section>
+</div>
+</div></section>
+
+<section class="sec" id="process"><div class="wrap tl">
+  <div class="stick"><div class="kick"><i></i>How it works</div><h2 class="h2 rw">Audit first. <span class="hl">Then scale.</span></h2>
+    <p class="lead fu">We don't touch your budget until we understand your accounts. Then every change is planned, logged and reviewed.</p>
+    <div class="acts fu" style="margin-top:32px"><a href="contact.html" class="btn btn-p mag " data-cursor="Start" data-label="Contact"><span class="bt">Start with an audit</span><span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a></div></div>
+  <div class="steps"><div class="rail"><i></i></div><div class="st"><span class="dot">01</span><h3>Discovery Call</h3><p>30 mins on your products, margins, goals and the channels you run today.</p><span class="t">Day 1</span></div><div class="st"><span class="dot">02</span><h3>Growth Audit</h3><p>Tracking, ad accounts, creative and landing pages reviewed. Written findings in 5–7 days.</p><span class="t">Days 2–7</span></div><div class="st"><span class="dot">03</span><h3>Strategy & Channel Plan</h3><p>Agree KPIs, budgets and which channel does which job before any money moves.</p><span class="t">Week 2</span></div><div class="st"><span class="dot">04</span><h3>Build & Tracking Setup</h3><p>Campaigns, tracking and dashboards built in parallel, with no disruption to what already works.</p><span class="t">Weeks 2–4</span></div><div class="st"><span class="dot">05</span><h3>Weekly Optimisation</h3><p>Bids, budgets, negatives and creative rotation, with every change logged in plain language.</p><span class="t">Every week</span></div><div class="st"><span class="dot">06</span><h3>Monthly Strategy Review</h3><p>Blended performance vs targets, creative learnings and next month's plan.</p><span class="t">Every month</span></div></div>
+</div></section>
+
+<section class="panel"><div class="glow" style="width:700px;height:700px;right:-250px;top:-250px;background:rgba(79,140,255,.28)"></div><div class="wrap scan">
+  <div><div class="kick"><i></i>The growth audit</div><h2 class="h2 rw">We don't touch your budget until we <span class="hl">understand it.</span></h2>
+    <div class="big"><span class="n">15</span><small>point growth audit · written report in 5–7 days</small></div></div>
+  <div class="term"><div class="bar"><i></i><i></i><i></i><span>ivia / growth-audit</span></div><ul><li><span class="s"></span>Tracking accuracy: Pixel, CAPI, GA4, Google Ads</li><li><span class="s"></span>Account & campaign structure</li><li><span class="s"></span>Wasted spend: search terms & placements</li><li><span class="s"></span>Audience overlap & targeting</li><li><span class="s"></span>Creative fatigue & testing cadence</li><li><span class="s"></span>Landing page & listing conversion rate</li><li><span class="s"></span>Attribution & reporting setup</li><li><span class="s"></span>Negative keyword coverage</li><li><span class="s"></span>Budget split across channels</li><li><span class="s"></span>Bid strategy & learning-phase health</li></ul><div class="ft"><span>Running checks…</span><b>0/10</b></div></div>
+</div></section>
+
+<section class="hcases" id="cases"><div class="hc-pin">
+  <div class="wrap head"><div><div class="kick"><i></i>Case studies · Amazon</div><h2 class="h2 rw">Real accounts. <span class="hl">Real results.</span></h2></div>
+  <p class="lead fu" style="margin:0 0 6px">Anonymized results from managed Amazon accounts, shown as relative improvements, each backed by a documented implementation timeline.</p></div>
+  <div class="hc-track"><article class="cs "><span class="tag">Amazon · Multi-SKU Portfolio · India</span><h3>35% TACOS reduction across 40+ ASINs in 90 days</h3><p>Four years of unstructured growth: 110+ campaigns, no naming conventions, duplicate keywords. SKU-level analysis revealed 30% of spend funding negative-margin products.</p><div class="ins"><b>Key insight</b>Blended ACOS hides the truth. SKU-level profitability analysis is non-negotiable at scale.</div><div class="mm"><div><b>31→20%</b><small>TACOS</small></div><div><b>+48%</b><small>Hero SKU revenue</small></div><div><b>₹80K</b><small>Recovered / month</small></div><div><b>110→58</b><small>Campaigns</small></div></div></article><article class="cs blue"><span class="tag">Amazon · Home Lighting · India</span><h3>44% ACOS reduction via a full restructure</h3><p>18 SKUs sharing the same campaigns, zero negative keyword management and 22% of spend on irrelevant search terms. ACOS stuck at 68–72%.</p><div class="ins"><b>Key insight</b>Architecture before optimization. Patching a broken account rarely works.</div><div class="mm"><div><b>70→39%</b><small>ACOS</small></div><div><b>48→31%</b><small>TACOS</small></div><div><b>22→6%</b><small>Wasted spend</small></div><div><b>+9</b><small>Page-1 keywords</small></div></div></article><article class="cs dark"><span class="tag">Amazon · Pet Supplies · India</span><h3>80% revenue scale without increasing ACOS</h3><p>The auto campaign had been paused for “high ACOS”, removing the brand's main discovery engine. The same 35 keywords had run since launch.</p><div class="ins"><b>Key insight</b>Pausing auto is almost never the answer. Pre-load negatives and manage it properly.</div><div class="mm"><div><b>+80%</b><small>Revenue</small></div><div><b>41→38%</b><small>ACOS</small></div><div><b>35→112</b><small>Keywords</small></div><div><b>+18%</b><small>ASIN target revenue</small></div></div></article><article class="cs "><span class="tag">Amazon · Skincare D2C · India</span><h3>12 page-1 keywords in 75 days, from zero</h3><p>A brand-new listing with 0 reviews and 0 organic rank, competing with established players. Conversion rate at launch was 4%.</p><div class="ins"><b>Key insight</b>Mid-competition keywords plus Vine coordination compress launch timelines significantly.</div><div class="mm"><div><b>0→12</b><small>Page-1 keywords</small></div><div><b>65→28%</b><small>TACOS</small></div><div><b>4→11%</b><small>CVR</small></div><div><b>0→35%</b><small>Organic share</small></div></div></article>
+    <a class="cs blue" href="case-studies.html" data-cursor="View all" data-label="Case Studies" style="justify-content:space-between"><span class="tag">More results</span><h3 style="font-size:clamp(34px,3.4vw,54px)">See every case study and live dashboard →</h3><p>Live Amazon Ads dashboards, four documented case studies, and how we measure Meta and Google.</p></a>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="kick"><i></i>Client feedback</div><h2 class="h2 rw">What brands say about <span class="hl">working with us.</span></h2>
+  <div class="tq"><div class="tabs"><button class="tab on"><span class="av">RK</span><span><b>R. Kumar</b><small>Founder, Home Lighting Brand · India</small></span><span class="pr"></span></button><button class="tab"><span class="av">PS</span><span><b>P. Sharma</b><small>Brand Manager, Office Products</small></span><span class="pr"></span></button><button class="tab"><span class="av">AP</span><span><b>A. Patel</b><small>Co-founder, Skincare Brand · India</small></span><span class="pr"></span></button></div><div class="quotes"><div class="q on"><div class="stars">★★★★★</div><blockquote><span class="qm">“</span>They took our ACOS from 68% to 34% in under 90 days. The weekly action log meant I always knew what changed and why. That transparency is genuinely rare.<span class="qm">”</span></blockquote></div><div class="q"><div class="stars">★★★★★</div><blockquote><span class="qm">“</span>We'd been burning ₹40,000/month on irrelevant search terms for over a year. The audit alone was worth it. The restructure that followed doubled our ROAS within two months.<span class="qm">”</span></blockquote></div><div class="q"><div class="stars">★★★★★</div><blockquote><span class="qm">“</span>Our launch went page 4 to page 1 for 12 keywords in 75 days. The playbook was methodical and every milestone was clear. Now scaling across two marketplaces.<span class="qm">”</span></blockquote></div></div></div>
+</div></section>
+
+<section class="sec" id="blog" style="padding-top:40px"><div class="wrap">
+  <div class="head"><div><div class="kick"><i></i>From the blog</div><h2 class="h2 rw">Growth <span class="hl">insights.</span></h2></div><a href="blog.html" class="btn btn-o mag " data-cursor="Blog" data-label="Blog"><span class="bt">All articles</span><span class="ar"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a></div>
+  <div class="posts"><a class="pc" href="blog-full-funnel-d2c.html" data-cat="Strategy" data-cursor="Read" data-label="Strategy"><div class="mt"><span class="cat">Strategy</span><span>4 min</span></div><h4>Amazon + Meta + Google: A Full-Funnel Plan for D2C Brands</h4><p>Amazon, Meta and Google each do a different job. How they work together, how to split budget, and how to measure the halo between them.</p><span class="rd"><i>→</i>Read article</span></a><a class="pc" href="blog-meta-ads-structure.html" data-cat="Meta Ads" data-cursor="Read" data-label="Meta Ads"><div class="mt"><span class="cat">Meta Ads</span><span>4 min</span></div><h4>Meta Ads Structure: Why Fewer Campaigns Beat More Targeting</h4><p>Interest stacks and a dozen ad sets feel like control. In practice they starve the algorithm. Here is the consolidated structure that wins.</p><span class="rd"><i>→</i>Read article</span></a><a class="pc" href="blog-campaign-structure.html" data-cat="Amazon" data-cursor="Read" data-label="Amazon"><div class="mt"><span class="cat">Amazon · Strategy</span><span>9 min read</span></div><h4>Amazon PPC 101: Campaign Structure That Actually Scales</h4><p>Most sellers build a flat account and wonder why ACOS won't budge. Learn the three-tier architecture that actually scales.</p><span class="rd"><i>→</i>Read article</span></a></div>
+</div></section>
+
+<section class="panel cta"><div class="glow" style="width:1000px;height:1000px;left:50%;top:78%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(123,97,255,.55),rgba(34,211,238,.14) 45%,transparent 70%)"></div><div class="wrap">
+  <div class="kick"><i></i>Let's talk</div>
+  <h2 class="rw">Let's make every rupee <span class="hl">count.</span></h2>
+  <p class="fu">Every engagement starts with a no-obligation growth audit. See exactly where your budget is going, on every channel, and what it takes to make it work harder.</p>
+  <div class="cta-ball-wrap"><a href="contact.html" class="cta-ball mag" data-cursor="Let's go" data-label="Contact">Get your free<br>growth audit<svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div>
+  <div class="alt fu"><span>Prefer a direct line?</span><a href="mailto:hello@iviasolutions.in">hello@iviasolutions.in</a><a href="https://wa.me/918607070505">WhatsApp +91 86070 70505</a></div>
+</div></section>
 
 </main>
 <footer><div class="wrap">
   <div class="f-grid">
     <div>
-      <a href="index.html" class="logo"><img src="logo-full.png" alt="ivia solutions" width="152" height="40"></a>
-      <p class="about">ivia solutions is a full-service digital marketing agency: performance ads on Meta, Google and Amazon, plus creative, SEO and tracking, for brands that want profitable, sustainable growth.</p>
-      <div class="soc"><a href="mailto:hello@iviasolutions.in" aria-label="Email"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a><a href="https://wa.me/918607070505" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></a></div>
+      <a href="index.html" class="logo"><img src="logo-full.png" alt="ivia solutions" width="190" height="44"></a>
+      <p class="about">A full-service digital marketing agency: performance ads on Meta, Google and Amazon, plus creative, SEO, websites and tracking, run as one plan for profitable, sustainable growth.</p>
+      <div class="soc"><a href="mailto:hello@iviasolutions.in" aria-label="Email"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a><a href="https://wa.me/918607070505" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></a></div>
     </div>
     <div><h5>Pages</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div><h5>Services</h5><ul><li><a href="services.html#meta">Meta Ads</a></li><li><a href="services.html#google">Google Ads</a></li><li><a href="services.html#amazon">Amazon &amp; Marketplaces</a></li><li><a href="services.html#creative">Creative &amp; Content</a></li><li><a href="services.html#seo">SEO</a></li><li><a href="services.html#tracking">Analytics &amp; Tracking</a></li></ul></div>
-    <div><h5>Contact</h5><ul><li><a href="mailto:hello@iviasolutions.in">hello@iviasolutions.in</a></li><li><a href="https://wa.me/918607070505">+91 86070 70505</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li><a href="mailto:hello@iviasolutions.in">hello@iviasolutions.in</a></li><li><a href="https://wa.me/918607070505">+91 86070 70505</a></li><li><a href="https://www.iviasolutions.in">www.iviasolutions.in</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
   </div>
-  <div class="giant" data-word="ivia">ivia</div>
-  <div class="copy"><span>© 2026 ivia solutions · Meta, Google, Amazon and related marks are trademarks of their respective owners.</span><span><a href="privacy.html">Privacy Policy</a></span></div>
-  <div class="credit">By<span>Bhavay Sehgal</span></div>
+  <div class="bigword" aria-hidden="true"><span class="o">ivia</span><span class="f">ivia</span></div>
+  <div class="f-bot">
+    <span>© 2026 IVIA Marketing Solutions LLP. Meta, Google, Amazon and related marks are trademarks of their respective owners.</span>
+    <div class="credit">By <b>Bhavay Sehgal &amp; Sanket Tijare</b><span>IVIA Marketing Solutions LLP</span></div>
+  </div>
 </div></footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>

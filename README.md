@@ -49,8 +49,8 @@ Any tag left empty stays switched off. Once IDs are added, these events fire aut
 - **Pages:** home, services, case studies, contact, privacy, landing, 404
 - **Blog:** 15 articles, covering Meta, Google, tracking, creative, strategy and 9 Amazon guides
 - **Shared files:** `style.css` (design), `main.js` (motion and interactions), `tracking.js` (analytics)
-- **Images:** `logo.png`, `logo-full.png`, `favicon.png`, `apple-touch-icon.png`, `og-image.jpg` (link preview), plus the two dashboard screenshots
+- **Images:** `logo.png` / `logo-light.png` / `logo-full.png` / `logo-white.png` (wordmark variants), `favicon.png`, `apple-touch-icon.png`, `og-image.jpg` (link preview), plus the two dashboard screenshots
 
 The contact form posts to Formspree.
 
-Design & build — By Bhavay Sehgal
+Design & build — By Bhavay Sehgal & Sanket Tijare, IVIA Marketing Solutions LLP
