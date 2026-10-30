@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<!-- Analytics & ad tracking: add your IDs in tracking.js -->
+<script src="tracking.js" data-page="Blog Tracking Setup"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Tracking That Actually Works: Pixel, Conversions API, GA4 and Consent", "description": "If your conversion tracking is wrong, every optimisation decision built on it is wrong too. A practical setup guide for Meta Pixel and Conversions API, GA4, Google Ads enhanced conversions and consent.", "author": {"@type": "Person", "name": "Bhavay Sehgal"}, "publisher": {"@type": "Organization", "name": "ivia solutions"}, "mainEntityOfPage": "https://www.iviasolutions.in/blog-tracking-setup.html"}</script>
+<title>Tracking That Actually Works: Pixel, Conversions API, GA4 and Consent | ivia Blog</title>
+<meta name="description" content="If your conversion tracking is wrong, every optimisation decision built on it is wrong too. A practical setup guide for Meta Pixel and Conversions API, GA4, Google Ads enhanced conversions and consent.">
+<link rel="canonical" href="https://www.iviasolutions.in/blog-tracking-setup.html">
+<meta property="og:url" content="https://www.iviasolutions.in/blog-tracking-setup.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ivia solutions">
+<meta property="og:title" content="Tracking That Actually Works: Pixel, Conversions API, GA4 and Consent | ivia Blog">
+<meta property="og:description" content="If your conversion tracking is wrong, every optimisation decision built on it is wrong too. A practical setup guide for Meta Pixel and Conversions API, GA4, Google Ads enhanced conversions and consent.">
+<meta property="og:image" content="https://www.iviasolutions.in/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-email="hello@iviasolutions.in" data-wa="https://wa.me/918607070505">
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="vignette"></div>
+<div id="curtain"><span>ivia</span></div>
+<div id="cur"><span></span></div>
+<div id="prog"></div>
+<nav>
+  <a href="index.html" class="logo" data-label="Home"><img src="logo.png" alt="ivia solutions" width="51" height="34"></a>
+  <div class="nav-links"><a href="services.html" class="">Services</a><a href="case-studies.html" class="">Case Studies</a><a href="blog.html" class="active">Blog</a><a href="contact.html" class="">Contact</a></div>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span class="scr">Menu</span><span class="bars"><b></b><b></b></span></button>
+</nav>
+<div id="overlay">
+  <ul><li><a class="big" href="index.html" data-stat="1" data-sub="team for every channel" data-label="Home">Home</a></li><li><a class="big" href="services.html" data-stat="9" data-sub="services under one roof" data-label="Services">Services</a></li><li><a class="big" href="case-studies.html" data-stat="₹1Cr+" data-sub="ad spend managed" data-label="Case Studies">Case Studies</a></li><li><a class="big" href="blog.html" data-stat="15" data-sub="in-depth growth guides" data-label="Blog">Blog</a></li><li><a class="big" href="contact.html" data-stat="1 day" data-sub="reply time, or WhatsApp" data-label="Contact">Contact</a></li></ul>
+  <div class="ov-foot"><a href="mailto:hello@iviasolutions.in">hello@iviasolutions.in</a><a href="https://wa.me/918607070505">+91 86070 70505</a><span>Meta · Google · Amazon</span></div>
+  <div class="pv"><b>9</b><small>services</small></div>
+</div>
+<main>
+<div class="read-prog"></div>
+<section class="art-hero" data-blob="1.3,0.3,0.75,2"><div class="wrap">
+  <a href="blog.html" class="back" data-label="Blog">← Back to blog</a>
+  <div class="art-meta"><span class="c">Tracking</span><span>October 2026</span><span>·</span><span>4 min read</span><span>·</span><span>By Bhavay Sehgal</span></div>
+  <h1>Tracking That Actually Works: Pixel, Conversions API, GA4 and Consent</h1>
+  <p class="intro">Ad platforms optimise towards whatever you tell them is a conversion. If tracking misses sales, double-counts them or measures the wrong action, the algorithm optimises confidently in the wrong direction. Fixing tracking is often the highest-return work in an account — and the least glamorous.</p>
+</div></section>
+<section data-blob="1.7,-0.2,0.55,0">
+  <article class="prose">
+
+<h2>Why Browser-Only Tracking Falls Short</h2>
+<p>Pixels and tags that run in the visitor's browser miss conversions — ad blockers, browser privacy features, short cookie lifetimes and consent choices all reduce what they can see. The result is under-reported conversions and algorithms working with an incomplete picture. The answer is to send conversion data from your server (or your platform's server integration) as well as the browser.</p>
+<div class="callout"><p>"Before we change a single bid, we check the tracking. More than once, the 'underperforming' channel turned out to be the one whose conversions simply weren't being recorded."</p></div>
+
+<h2>Meta: Pixel + Conversions API</h2>
+<p>The Meta Pixel captures events in the browser. The <strong>Conversions API</strong> sends the same events from your server. Run both, and send each event with a shared <strong>event_id</strong> so Meta can deduplicate — otherwise one purchase is counted twice. Most e-commerce platforms, including Shopify, offer native integrations that handle this. Check Events Manager for event match quality and deduplication warnings after setup.</p>
+
+<h2>Google Ads: Enhanced Conversions</h2>
+<p>Enhanced conversions send hashed first-party data — such as the email address entered at checkout — alongside the conversion tag, which helps Google match conversions it would otherwise miss. It is straightforward to enable through Google Tag Manager or the Google tag and is one of the simplest accuracy improvements available. For lead generation, importing offline conversions from your CRM lets Google optimise for leads that actually became customers.</p>
+
+<h2>GA4: Your Neutral Referee</h2>
+<p>Every ad platform grades its own homework. GA4 gives you a single, cross-channel view of how sessions and conversions arrive. Set up the events that matter as <strong>key events</strong>, link GA4 to Google Ads, and keep UTM parameters consistent across Meta, email, WhatsApp and influencer links so traffic is attributed to the right source instead of landing in "direct" or "unassigned."</p>
+
+<h3>A simple UTM convention</h3>
+<p>Pick one format and never deviate: lowercase, no spaces, the same names every time — for example <strong>utm_source=meta</strong>, <strong>utm_medium=paid_social</strong>, <strong>utm_campaign=prospecting_oct</strong>. Inconsistent naming is the most common reason GA4 reports look wrong.</p>
+
+<h2>Consent</h2>
+<p>If you serve visitors in the EEA or UK, Google requires Consent Mode for personalised advertising features, and a consent banner is needed in practice. India's Digital Personal Data Protection Act also puts consent and purpose limitation at the centre of how personal data is handled. Configure your tags to respect consent choices from day one — retrofitting it later is far more painful.</p>
+
+<div class="key-points">
+  <h4>Tracking Audit Checklist</h4>
+  <ul>
+    <li>Meta Pixel and Conversions API both live, with event_id deduplication working</li>
+    <li>Google Ads conversion tag verified, enhanced conversions on</li>
+    <li>Only meaningful actions counted as primary conversions — no double counting</li>
+    <li>GA4 key events set up and linked to Google Ads</li>
+    <li>One UTM naming convention used on every paid and owned link</li>
+    <li>Consent banner and tag behaviour configured for the markets you serve</li>
+    <li>Test purchase or test lead run end-to-end and checked in every platform</li>
+  </ul>
+</div>
+
+<h2>Test It Like a Customer</h2>
+<p>After any change, place a real test order or submit a real test lead, then confirm it appears once — not zero times, not twice — in Meta Events Manager, Google Ads and GA4. It takes twenty minutes and prevents months of optimising on bad data.</p>
+
+<hr class="post-divider">
+<p>Good tracking does not make ads perform. It makes performance visible, so every other decision — budgets, bids, creative, channel mix — is made on facts instead of guesses.</p>
+
+  </article>
+  <div class="wrap">
+    <div class="art-cta"><small>Want results like these?</small><h3>Start with a free audit</h3>
+      <p>Every ivia engagement starts with a no-obligation growth audit. See exactly where your budget is going and what it takes to fix it.</p>
+      <div class="cta-row"><a href="mailto:hello@iviasolutions.in" class="btn btn-p mag" data-cursor="Email"><span class="fill"></span><span class="lbl"><span>Email us ↗</span><span>Email us ↗</span></span></a><a href="https://wa.me/918607070505" class="btn btn-g mag" data-cursor="Chat"><span class="fill"></span><span class="lbl"><span>WhatsApp ↗</span><span>WhatsApp ↗</span></span></a></div></div>
+    <div style="max-width:1000px;margin:80px auto 120px"><div class="kicker">More articles</div><div class="related"><a href="blog-meta-ads-structure.html" data-label="Meta Ads"><small>Meta Ads</small><h4>Meta Ads Structure: Why Fewer Campaigns Beat More Targeting</h4></a><a href="blog-google-search-vs-pmax.html" data-label="Google Ads"><small>Google Ads</small><h4>Google Search vs Performance Max: When to Use Each</h4></a><a href="blog-roas-mer-cac.html" data-label="Strategy"><small>Metrics</small><h4>ROAS vs MER vs CAC: Which Number Should Run Your Business?</h4></a></div></div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">
+  <div class="f-grid">
+    <div>
+      <a href="index.html" class="logo"><img src="logo-full.png" alt="ivia solutions" width="152" height="40"></a>
+      <p class="about">ivia solutions is a full-service digital marketing agency: performance ads on Meta, Google and Amazon, plus creative, SEO and tracking, for brands that want profitable, sustainable growth.</p>
+      <div class="soc"><a href="mailto:hello@iviasolutions.in" aria-label="Email"><svg viewBox="0 0 24 24" width="18" height="18"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a><a href="https://wa.me/918607070505" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></a></div>
+    </div>
+    <div><h5>Pages</h5><ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h5>Services</h5><ul><li><a href="services.html#meta">Meta Ads</a></li><li><a href="services.html#google">Google Ads</a></li><li><a href="services.html#amazon">Amazon &amp; Marketplaces</a></li><li><a href="services.html#creative">Creative &amp; Content</a></li><li><a href="services.html#seo">SEO</a></li><li><a href="services.html#tracking">Analytics &amp; Tracking</a></li></ul></div>
+    <div><h5>Contact</h5><ul><li><a href="mailto:hello@iviasolutions.in">hello@iviasolutions.in</a></li><li><a href="https://wa.me/918607070505">+91 86070 70505</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="giant" data-word="ivia">ivia</div>
+  <div class="copy"><span>© 2026 ivia solutions · Meta, Google, Amazon and related marks are trademarks of their respective owners.</span><span><a href="privacy.html">Privacy Policy</a></span></div>
+  <div class="credit">By<span>Bhavay Sehgal</span></div>
+</div></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
