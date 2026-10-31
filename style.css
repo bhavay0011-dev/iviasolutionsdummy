@@ -860,3 +860,9 @@ a.svc:hover{border-color:rgba(255,90,31,.4)}
 #ivc-launch:hover .nm{opacity:1;transform:translate(0,-50%)}
 #ivc-launch.open .nm{display:none}
 @media (hover:none){#ivc-launch .nm{display:none}}
+
+/* blurred bar behind the (blend-mode) nav once the page scrolls */
+#navbg{position:fixed;top:0;left:0;right:0;height:76px;z-index:1099;pointer-events:none;background:rgba(10,10,11,.62);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border-bottom:1px solid rgba(239,235,228,.07);opacity:0;transform:translateY(-100%);transition:opacity .45s,transform .55s cubic-bezier(.2,.8,.2,1)}
+#navbg.on{opacity:1;transform:none}
+.menu-open #navbg{opacity:0}
+@media (max-width:600px){#navbg{height:66px}}
