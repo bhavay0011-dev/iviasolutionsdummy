@@ -289,12 +289,22 @@ if (ov && mb) {
   ovLinks.forEach(a => {
     a.addEventListener('mouseenter', () => {
       $('b', pv).textContent = a.dataset.stat; $('small', pv).textContent = a.dataset.sub;
-      gsap.to(pv, { opacity: 1, scale: 1, rotate: gsap.utils.random(-8, 8), duration: .4, ease: 'back.out(2)' });
+      gsap.to(pv, { opacity: 1, scale: 1, rotate: gsap.utils.random(-8, 8), duration: .4, ease: 'back.out(2)', overwrite: true });
       scramble($('.t', a) || a, null, 450);
-      gsap.to(ovLinks.filter(x => x !== a), { opacity: .3, duration: .3 }); gsap.to(a, { x: 30, duration: .4 });
+      gsap.to(ovLinks.filter(x => x !== a), { opacity: .3, duration: .3, overwrite: 'auto' }); gsap.to(a, { opacity: 1, x: 30, duration: .4, overwrite: 'auto' });
     });
-    a.addEventListener('mouseleave', () => { gsap.to(pv, { opacity: 0, scale: .5, duration: .3 }); gsap.to(ovLinks, { opacity: 1, duration: .3 }); gsap.to(a, { x: 0, duration: .4 }); });
+    a.addEventListener('mouseleave', () => pvHide(a));
   });
+  function pvHide(a) {
+    gsap.to(pv, { opacity: 0, scale: .5, duration: .3, overwrite: true });
+    gsap.to(ovLinks, { opacity: 1, duration: .3, overwrite: 'auto' });
+    gsap.to(a ? [a] : ovLinks, { x: 0, duration: .4, overwrite: 'auto' });
+  }
+  // safety net: pointer no longer on a big menu link (moved fast, left the window, menu closed) -> hide the card
+  ov.addEventListener('mouseleave', () => pvHide());
+  ov.addEventListener('mouseover', e => { if (!e.target.closest('a.big')) pvHide(); });
+  mb.addEventListener('click', () => setTimeout(() => { if (!menuOpen) pvHide(); }, 0));
+  addEventListener('keydown', e => { if (e.key === 'Escape') pvHide(); });
 }
 
 /* =====================================================================
