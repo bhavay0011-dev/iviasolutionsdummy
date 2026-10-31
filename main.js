@@ -855,7 +855,7 @@ initCalcs(); initConsoles();
 if (location.hash.length > 1) { let ht = null; try { ht = $(location.hash); } catch (e) {} if (ht) addEventListener('load', () => setTimeout(() => { ScrollTrigger.refresh(); scrollToEl(ht); }, 1400)); }
 
 /* nav background on scroll */
-{ const nb = $('#navbg'); if (nb) { const t = () => nb.classList.toggle('on', (window.scrollY || 0) > 40); addEventListener('scroll', t, { passive: true }); t(); } }
+{ const nb = $('#navbg'); if (nb) { const t = () => { const on = (window.scrollY || 0) > 40; nb.classList.toggle('on', on); document.documentElement.classList.toggle('nav-solid', on); }; addEventListener('scroll', t, { passive: true }); t(); } }
 
 
 initForm();

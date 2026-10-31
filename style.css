@@ -866,3 +866,5 @@ a.svc:hover{border-color:rgba(255,90,31,.4)}
 #navbg.on{opacity:1;transform:none}
 .menu-open #navbg{opacity:0}
 @media (max-width:600px){#navbg{height:66px}}
+/* on the blurred bar the nav no longer blends (Chrome drops blended text over backdrop-filter) */
+.nav-solid:not(.menu-open) nav{mix-blend-mode:normal}
