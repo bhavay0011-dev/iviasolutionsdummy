@@ -24,6 +24,21 @@ var IVIA_TRACKING = {
 
 /* ---------- nothing below this line needs editing ---------- */
 (function () {
+  // clean address bar: /bidvista.html -> /bidvista (live site); local file previews keep working
+  try {
+    if (location.protocol === 'file:') {
+      document.addEventListener('DOMContentLoaded', function () {
+        [].forEach.call(document.querySelectorAll('a[href]'), function (a) {
+          var h = a.getAttribute('href'), m = h.match(/^(\.\/|[a-z0-9-]+)([?#].*)?$/);
+          if (m) a.setAttribute('href', (m[1] === './' ? 'index' : m[1]) + '.html' + (m[2] || ''));
+        });
+      });
+    } else if (/\.html$/.test(location.pathname) && !/404\.html$/.test(location.pathname)) {
+      history.replaceState(null, '', location.pathname.replace(/index\.html$/, '').replace(/\.html$/, '') + location.search + location.hash);
+    }
+  } catch (e) {}
+})();
+(function () {
   var T = IVIA_TRACKING, s = document.currentScript, W = window, D = document;
   var page = (s && s.getAttribute('data-page')) || D.title;
   function id(v) { return (v || '').replace(/\s+/g, ''); }
