@@ -699,11 +699,11 @@ $$('.ch').forEach((c, i) => gsap.from(c, { x: 60, opacity: 0, duration: .9, dela
    ===================================================================== */
 $$('.giant').forEach(giant => {
   const word = giant.dataset.word || giant.textContent.trim();
-  giant.innerHTML = [...word].map(c => `<span>${c}</span>`).join('');
-  const gL = $$('span', giant);
-  gsap.from(gL, { yPercent: -200, rotate: () => gsap.utils.random(-90, 90), opacity: 0, stagger: { each: .06, from: 'random' }, duration: 1.6, ease: 'bounce.out', scrollTrigger: { trigger: giant, start: 'top 98%', toggleActions: 'play none none reverse' } });
+  giant.innerHTML = [...word].map(c => `<span><i>${c}</i></span>`).join('');
+  const gL = $$(':scope > span', giant);
+  gsap.fromTo(gL, { yPercent: -200, rotate: () => gsap.utils.random(-90, 90), opacity: 0 }, { yPercent: 0, rotate: 0, opacity: 1, stagger: { each: .06, from: 'random' }, duration: 1.6, ease: 'bounce.out', immediateRender: true, scrollTrigger: { trigger: giant, start: 'top 98%', toggleActions: 'play none none reverse' } });
   if (!touch) {
-    const gq = gL.map(l => ({ l, y: gsap.quickTo(l, 'y', { duration: .6, ease: 'power3' }), r: gsap.quickTo(l, 'rotate', { duration: .6, ease: 'power3' }) }));
+    const gq = gL.map(o => { const l = $('i', o); return { l, y: gsap.quickTo(l, 'y', { duration: .6, ease: 'power3' }), r: gsap.quickTo(l, 'rotate', { duration: .6, ease: 'power3' }) }; });
     let gLift = false;
     onPtr(() => {
       const gr = giant.getBoundingClientRect(), vis = !(gr.top > innerHeight || gr.bottom < 0);
