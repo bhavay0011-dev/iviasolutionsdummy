@@ -286,19 +286,25 @@ if (ov && mb) {
   addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
   const pvx = gsap.quickTo(pv, 'x', { duration: .5, ease: 'power3' }), pvy = gsap.quickTo(pv, 'y', { duration: .5, ease: 'power3' });
   ov.addEventListener('mousemove', e => { pvx(e.clientX + 30); pvy(e.clientY - 60); });
+  // The hover style swaps the font (serif italic, narrower) and the text scrambles; if the link's own box changed size or moved,
+  // the mouse would fall off it, un-hover, grow back, re-hover... (the jitter loop). Lock each link's box to its normal width
+  // and slide only the text inside it.
+  const kids = a => $$(':scope > span, :scope > sup', a);
+  const lockW = () => ovLinks.forEach(a => { if (a.matches(':hover')) return; a.style.width = ''; a.style.width = Math.ceil(a.getBoundingClientRect().width) + 'px'; });
+  lockW(); document.fonts && document.fonts.ready.then(lockW); addEventListener('resize', lockW);
   ovLinks.forEach(a => {
     a.addEventListener('mouseenter', () => {
       $('b', pv).textContent = a.dataset.stat; $('small', pv).textContent = a.dataset.sub;
-      gsap.to(pv, { opacity: 1, scale: 1, rotate: gsap.utils.random(-8, 8), duration: .4, ease: 'back.out(2)', overwrite: true });
+      gsap.to(pv, { opacity: 1, scale: 1, rotate: gsap.utils.random(-8, 8), duration: .4, ease: 'back.out(2)', overwrite: 'auto' });
       scramble($('.t', a) || a, null, 450);
-      gsap.to(ovLinks.filter(x => x !== a), { opacity: .3, duration: .3, overwrite: 'auto' }); gsap.to(a, { opacity: 1, x: 30, duration: .4, overwrite: 'auto' });
+      gsap.to(ovLinks.filter(x => x !== a), { opacity: .3, duration: .3, overwrite: 'auto' }); gsap.to(a, { opacity: 1, duration: .3, overwrite: 'auto' }); gsap.to(kids(a), { x: 30, duration: .4, overwrite: 'auto' });
     });
     a.addEventListener('mouseleave', () => pvHide(a));
   });
   function pvHide(a) {
-    gsap.to(pv, { opacity: 0, scale: .5, duration: .3, overwrite: true });
+    gsap.to(pv, { opacity: 0, scale: .5, duration: .3, overwrite: 'auto' });
     gsap.to(ovLinks, { opacity: 1, duration: .3, overwrite: 'auto' });
-    gsap.to(a ? [a] : ovLinks, { x: 0, duration: .4, overwrite: 'auto' });
+    gsap.to(a ? kids(a) : ovLinks.flatMap(kids), { x: 0, duration: .4, overwrite: 'auto' });
   }
   // safety net: pointer no longer on a big menu link (moved fast, left the window, menu closed) -> hide the card
   ov.addEventListener('mouseleave', () => pvHide());

@@ -893,3 +893,6 @@ a.svc:hover{border-color:rgba(255,90,31,.4)}
   #ivc-launch{width:52px;height:52px;right:14px;bottom:14px}
   #ivc-tip{right:76px;bottom:16px;max-width:190px;font-size:12.5px;padding:11px 32px 11px 13px}
 }
+/* menu links: fixed box while hovered (see lockW in main.js) */
+#overlay a.big{white-space:nowrap}
+#overlay a.big > span,#overlay a.big > sup{display:inline-block}
