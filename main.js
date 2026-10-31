@@ -172,7 +172,7 @@ if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
   const l = $('#loader'); l && l.remove();
   const c = $('#curtain'); c && c.remove();
   $$('.cnt').forEach(el => countTo(el));
-  initForm(); initFaqBasic(); initCalcs(); initConsoles();
+  initForm(); initFaqBasic(); initCalcs(); initConsoles(); initMMM();
   return;
 }
 gsap.registerPlugin(ScrollTrigger);
@@ -826,7 +826,7 @@ function initCalcs() {
     if (tc.dataset.bound) return; tc.dataset.bound = 1;
     const boxes = $$('input[type=checkbox]', tc), ring = $('.tc-ring circle.v', tc), num = $('.tc-ring b', tc), h = $('.tchk-r h4', tc), p = $('.tchk-r p', tc);
     const L = 2 * Math.PI * 88; ring.style.strokeDasharray = L; ring.style.strokeDashoffset = L;
-    const V = [[8, 'Rock solid.', 'Your tracking basics are in place. Keep checking reported numbers against real orders every month.'],
+    const V = tc.dataset.v ? JSON.parse(tc.dataset.v) : [[8, 'Rock solid.', 'Your tracking basics are in place. Keep checking reported numbers against real orders every month.'],
                [6, 'Nearly there.', 'A couple of gaps can still mislead the algorithms. Worth closing before you scale spend.'],
                [3, 'Leaky.', 'Platforms are probably optimising on incomplete data. This is usually the first thing we fix.'],
                [0, 'Flying blind.', 'Most decisions are being made without reliable data. Fix tracking before spending more.']];
@@ -838,7 +838,7 @@ function initCalcs() {
       window.gsap ? gsap.to(ring, { strokeDashoffset: off, duration: .6, ease: 'power3.out' }) : (ring.style.strokeDashoffset = off);
       num.textContent = n; const v = V.find(x => n >= x[0]); h.textContent = v[1]; p.textContent = v[2];
     };
-    boxes.forEach(b => b.addEventListener('change', () => { upd(); if (!used) { used = true; window.ivTrack && ivTrack('calculator_use', { calculator: 'tracking_checklist' }); } if (window.gsap) gsap.fromTo(b.closest('label'), { scale: .97 }, { scale: 1, duration: .4, ease: 'back.out(3)' }); }));
+    boxes.forEach(b => b.addEventListener('change', () => { upd(); if (!used) { used = true; window.ivTrack && ivTrack('calculator_use', { calculator: tc.dataset.name || 'tracking_checklist' }); } if (window.gsap) gsap.fromTo(b.closest('label'), { scale: .97 }, { scale: 1, duration: .4, ease: 'back.out(3)' }); }));
     upd();
   });
   /* tabs */
@@ -887,7 +887,121 @@ function initConsoles() {
     }
   });
 }
-initCalcs(); initConsoles();
+
+/* =====================================================================
+   v3: MMM PAGE (budget lab, carryover + diminishing-returns demos)
+   ===================================================================== */
+function initMMM() {
+  const G = window.gsap, NS = 'http://www.w3.org/2000/svg';
+  const el = (tag, at) => { const e = document.createElementNS(NS, tag); for (const k in at) e.setAttribute(k, at[k]); return e; };
+  const hill = (c, x) => x > 0 ? c.vmax * Math.pow(x, c.a) / (Math.pow(x, c.a) + Math.pow(c.k, c.a)) : 0;
+  const mroi = (c, x) => (hill(c, x + .05) - hill(c, Math.max(0, x - .05))) / (x > .05 ? .1 : .05 + x);
+  const L = v => '₹' + (Math.round(v * 10) / 10).toLocaleString('en-IN', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + 'L';
+  const X2 = v => (Math.round(v * 100) / 100).toFixed(2) + '×';
+
+  /* ---- budget lab ---- */
+  $$('.mmlab').forEach(lab => {
+    if (lab.dataset.bound) return; lab.dataset.bound = 1;
+    const C = JSON.parse(lab.dataset.lab), svg = $('svg', lab), gGrid = $('.ml-grid', svg), gCurves = $('.ml-curves', svg), gMarks = $('.ml-marks', svg);
+    const W = 560, H = 330, P = { l: 34, r: 14, t: 14, b: 30 }, XM = 10, YM = 16;
+    const sx = x => P.l + x / XM * (W - P.l - P.r), sy = y => H - P.b - y / YM * (H - P.t - P.b);
+    for (let i = 0; i <= XM; i += 2) { gGrid.appendChild(el('line', { x1: sx(i), x2: sx(i), y1: P.t, y2: H - P.b })); const t = el('text', { x: sx(i), y: H - 10, 'text-anchor': 'middle' }); t.textContent = i; gGrid.appendChild(t); }
+    for (let j = 0; j <= YM; j += 4) { gGrid.appendChild(el('line', { x1: P.l, x2: W - P.r, y1: sy(j), y2: sy(j) })); const t = el('text', { x: P.l - 8, y: sy(j) + 4, 'text-anchor': 'end' }); t.textContent = j; gGrid.appendChild(t); }
+    const M = {};
+    C.forEach(c => {
+      let d = ''; for (let i = 0; i <= 100; i++) { const x = i / 10; d += (i ? 'L' : 'M') + sx(x).toFixed(1) + ',' + sy(hill(c, x)).toFixed(1); }
+      gCurves.appendChild(el('path', { d, stroke: c.color, class: 'c' }));
+      const ring = el('circle', { r: 11, stroke: c.color, class: 'ring' }), dot = el('circle', { r: 7, fill: c.color, class: 'dot' });
+      gMarks.appendChild(ring); gMarks.appendChild(dot); M[c.id] = { dot, ring };
+    });
+    const nums = $$('input[data-ch]', lab), rngs = $$('input[data-chr]', lab), O = k => $(`[data-o="${k}"]`, lab);
+    const fill = r => r.style.setProperty('--p', (+r.value / +r.max * 100) + '%');
+    const val = () => { const v = {}; nums.forEach(n => v[n.dataset.ch] = Math.max(0, Math.min(10, parseFloat(n.value) || 0))); return v; };
+    const total = v => C.reduce((a, c) => a + v[c.id], 0), rev = v => C.reduce((a, c) => a + hill(c, v[c.id]), 0);
+    function best(T) {   // brute force over a 0.05 grid: exact enough, and fine with S-shaped curves
+      let bv = -1, bx = null; const st = .05, cap = 10;
+      for (let a = 0; a <= Math.min(cap, T) + 1e-9; a += st) for (let b = 0; b <= Math.min(cap, T - a) + 1e-9; b += st) {
+        const c3 = T - a - b; if (c3 > cap + 1e-9) continue;
+        const r = hill(C[0], a) + hill(C[1], b) + hill(C[2], c3); if (r > bv) { bv = r; bx = [a, b, c3]; }
+      }
+      const o = {}; C.forEach((c, i) => o[c.id] = bx ? bx[i] : 0); return o;
+    }
+    let raf = 0, used = false, bestV = null;
+    const place = (m, x, c) => { m.setAttribute('cx', sx(x)); m.setAttribute('cy', sy(hill(c, x))); };
+    function run() {
+      raf = 0;
+      const v = val(), T = total(v), r = rev(v); bestV = best(T); const rb = rev(bestV);
+      O('total').textContent = L(T); O('rev').textContent = L(r); O('best').textContent = L(rb);
+      const g = r > 0 ? (rb / r - 1) * 100 : 0;
+      O('gain').textContent = g >= .5 ? '+' + g.toFixed(0) + '% more, same spend' : 'You are already close to the best split';
+      C.forEach(c => {
+        place(M[c.id].dot, v[c.id], c); place(M[c.id].ring, bestV[c.id], c);
+        const row = $(`tr[data-row="${c.id}"]`, lab), x = v[c.id], mr = mroi(c, x);
+        $('[data-f="spend"]', row).textContent = L(x);
+        $('[data-f="roi"]', row).textContent = x > 0 ? X2(hill(c, x) / x) : '—';
+        $('[data-f="mroi"]', row).textContent = X2(mr);
+        const tg = x <= 0 ? ['off', 'Not running'] : mr >= 1 ? ['up', 'Room to grow'] : mr >= .6 ? ['mid', 'Near its limit'] : ['down', 'Saturated'];
+        const t = $('[data-f="tag"]', row); t.textContent = tg[1]; t.className = 'tg ' + tg[0];
+      });
+      const moves = C.map(c => ({ c, d: bestV[c.id] - v[c.id] }));
+      const from = moves.filter(m => m.d < -.24).sort((a, b) => a.d - b.d), to = moves.filter(m => m.d > .24).sort((a, b) => b.d - a.d);
+      const names = a => a.map(m => m.c.name).join(' and ');
+      O('say').innerHTML = (from.length && to.length && g >= .5)
+        ? `Moving about <b>${L(-from.reduce((a, m) => a + m.d, 0))}</b> a week from ${names(from)} to ${names(to)} adds about <b>${L(rb - r)}</b> of incremental revenue a week, with the same total budget.`
+        : 'This split is already close to the best one for this budget. Try putting most of it into a single channel and watch the next-rupee return fall.';
+    }
+    const soon = () => { if (!raf) raf = requestAnimationFrame(run); };
+    const touched = () => { if (!used) { used = true; window.ivTrack && ivTrack('calculator_use', { calculator: 'mmm_budget_lab' }); } };
+    rngs.forEach(r => { fill(r); r.addEventListener('input', () => { $(`input[data-ch="${r.dataset.chr}"]`, lab).value = r.value; fill(r); soon(); touched(); }); });
+    nums.forEach(n => n.addEventListener('input', () => { const r = $(`input[data-chr="${n.dataset.ch}"]`, lab); if (n.value !== '') { r.value = n.value; fill(r); } soon(); touched(); }));
+    $('[data-best]', lab).addEventListener('click', () => {
+      touched(); if (!bestV) return;
+      const tgt = bestV, st = {}; nums.forEach(n => st[n.dataset.ch] = parseFloat(n.value) || 0);
+      const apply = p => { nums.forEach(n => { const k = n.dataset.ch, x = Math.round((st[k] + (tgt[k] - st[k]) * p) * 20) / 20; n.value = x; const r = $(`input[data-chr="${k}"]`, lab); r.value = x; fill(r); }); run(); };
+      if (G && !reduce) { const o = { p: 0 }; G.to(o, { p: 1, duration: 1, ease: 'power3.inOut', onUpdate: () => apply(o.p) }); } else apply(1);
+    });
+    run();
+    if (G) G.from($$('.ml-curves path', lab), { strokeDashoffset: 900, strokeDasharray: 900, duration: 1.8, stagger: .2, ease: 'power3.out', clearProps: 'strokeDasharray,strokeDashoffset', scrollTrigger: { trigger: lab, start: 'top 75%' } });
+    if (G) G.from(lab, { y: 140, rotateX: -16, scale: .94, opacity: 0, duration: 1.4, ease: 'expo.out', transformPerspective: 1400, scrollTrigger: { trigger: lab, start: 'top 90%' } });
+  });
+
+  /* ---- carryover demo ---- */
+  $$('[data-adstock]').forEach(box => {
+    if (box.dataset.bound) return; box.dataset.bound = 1;
+    const r = $('input[type=range]', box), bars = $$('rect.b', box), out = $('[data-o="decay"]', box), rd = $('[data-o="adread"]', box);
+    const fill = () => r.style.setProperty('--p', (+r.value / +r.max * 100) + '%');
+    const up = () => {
+      const d = +r.value / 100; out.textContent = r.value; fill();
+      bars.forEach(b => { const w = +b.dataset.w, h = 120 * Math.pow(d, w) * (w === 0 ? 1 : 1); const y = 150 - h;
+        G ? G.to(b, { attr: { y, height: h }, duration: .5, ease: 'power3.out' }) : (b.setAttribute('y', y), b.setAttribute('height', h)); });
+      const first = (1 - d) * 100;
+      rd.innerHTML = d === 0 ? 'No carryover: the whole effect lands in the week you spend. Typical of pure search.' :
+        `The week you spend delivers <b>${first.toFixed(0)}%</b> of the total effect. The other <b>${(100 - first).toFixed(0)}%</b> arrives over the following weeks${d >= .5 ? ', so cutting this channel looks free at first and hurts later' : ''}.`;
+    };
+    r.addEventListener('input', up); up();
+  });
+
+  /* ---- diminishing returns demo ---- */
+  $$('[data-sat]').forEach(box => {
+    if (box.dataset.bound) return; box.dataset.bound = 1;
+    const meta = { vmax: 15, k: 3.2, a: 1.3 };
+    const r = $('input[type=range]', box), pt = $('.pt', box), tan = $('.tan', box), sp = $('[data-o="sp"]', box), rd = $('[data-o="satread"]', box);
+    const X = x => x / 10 * 300, Y = y => 170 - y / 16 * 160;
+    const fill = () => r.style.setProperty('--p', ((+r.value - +r.min) / (+r.max - +r.min) * 100) + '%');
+    const up = () => {
+      const x = +r.value, y = hill(meta, x), m = mroi(meta, x); fill(); sp.textContent = x;
+      pt.setAttribute('cx', X(x)); pt.setAttribute('cy', Y(y));
+      const dx = 1.6; tan.setAttribute('x1', X(x - dx)); tan.setAttribute('y1', Y(y - m * dx)); tan.setAttribute('x2', X(x + dx)); tan.setAttribute('y2', Y(y + m * dx));
+      rd.innerHTML = `Average return here: <b>₹${(y / x).toFixed(2)}</b> per ₹1. The <b>next</b> ₹1 returns <b>₹${m.toFixed(2)}</b>${m < 1 ? ', less than it costs' : ''}.`;
+    };
+    r.addEventListener('input', up); up();
+  });
+  $$('.mm-idea').forEach((c, i) => { if (G) G.from(c, { y: 90, opacity: 0, rotateX: -18, duration: 1.2, delay: (i % 3) * .1, ease: 'expo.out', transformPerspective: 1200, scrollTrigger: { trigger: c, start: 'top 90%' } }); });
+  $$('.tri').forEach((c, i) => { if (G) G.from(c, { y: 100, opacity: 0, duration: 1.1, delay: i * .12, ease: 'expo.out', scrollTrigger: { trigger: '.tris', start: 'top 85%' } }); });
+  if (G && $('.tri-loop')) G.from('.tri-loop > *', { y: 20, opacity: 0, stagger: .07, duration: .6, ease: 'back.out(2)', scrollTrigger: { trigger: '.tri-loop', start: 'top 92%' } });
+}
+
+initCalcs(); initConsoles(); initMMM();
 
 /* contact page: preselect the service from ?s=meta etc. */
 (() => {

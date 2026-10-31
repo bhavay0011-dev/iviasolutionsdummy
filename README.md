@@ -126,7 +126,7 @@ So you can see which campaign produced each lead, even before analytics is set u
 
 - **Pages:**
   - home and services
-  - 9 service pages: `meta-ads`, `google-ads`, `marketplaces`, `creative`, `social-media`, `seo`, `websites`, `analytics-tracking`, `email-whatsapp`
+  - 10 service pages: `meta-ads`, `google-ads`, `marketplaces`, `creative`, `social-media`, `seo`, `websites`, `analytics-tracking`, `marketing-mix-modelling` (short link: `/mmm`), `email-whatsapp`
   - `bidvista`, case studies, blog (15 articles), contact, privacy, landing and 404
 - **Shared files:** `style.css` (design), `main.js` (motion and interactions), `tracking.js` (analytics and measurement), `chatbot.js` (Ivvy) and `chat-kb.js` (chat knowledge).
 - **Images:** `logo.png`, `logo-full.png`, `favicon.png`, `apple-touch-icon.png`, `og-image.jpg` and the two dashboard screenshots.
