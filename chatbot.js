@@ -467,7 +467,7 @@ var IVIA_CHAT = {
   if (nudge && !sget('ivc_tip') && !sget('ivc_opened')) setTimeout(function () {
     if (opened || sget('ivc_tip') || D.documentElement.classList.contains('menu-open')) return;
     tip.classList.add('on'); sset('ivc_tip', '1');
-    setTimeout(function () { hideTip(); }, 12000);
+    setTimeout(function () { hideTip(); }, innerWidth < 700 ? 7000 : 12000);
   }, nudge * 1000);
   }
   if (D.body) start(); else D.addEventListener('DOMContentLoaded', start);

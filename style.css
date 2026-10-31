@@ -868,3 +868,28 @@ a.svc:hover{border-color:rgba(255,90,31,.4)}
 @media (max-width:600px){#navbg{height:66px}}
 /* on the blurred bar the nav no longer blends (Chrome drops blended text over backdrop-filter) */
 .nav-solid:not(.menu-open) nav{mix-blend-mode:normal}
+
+/* ======================= MOBILE CLEAN-UP ======================= */
+@media (max-width:700px){
+  /* calmer background orb: dimmer so it never fights the text */
+  #gl{opacity:.45}
+  /* hero: fewer floating bits, more breathing room */
+  .hero .badge{display:none}
+  .hero{padding:118px 0 56px;min-height:100svh}
+  .hero .eyebrow{margin-bottom:26px}
+  .hero h1{font-size:clamp(50px,14.2vw,72px);line-height:.95}
+  .hero-bottom{margin-top:34px;gap:30px}
+  .hero-bottom p{font-size:16.5px;line-height:1.65;color:rgba(240,235,227,.82)}
+  .hero .cta-row,.phero .cta-row,.bv-hero .cta-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%}
+  .hero .cta-row .btn,.phero .cta-row .btn,.bv-hero .cta-row .btn{justify-content:center;width:100%;padding-left:12px;padding-right:12px}
+  .hero .cta-row .btn:nth-child(3){grid-column:1 / -1}
+  /* paragraphs: a touch brighter and roomier */
+  .lead,.sec p.lead,.phero p,.bv-hero p{line-height:1.7}
+  /* sections: consistent rhythm, no cramped stacks */
+  .sec{padding:104px 0}
+  .kicker{margin-bottom:18px}
+  .title{margin-bottom:22px}
+  /* chat bubble: smaller so it covers less of the page */
+  #ivc-launch{width:52px;height:52px;right:14px;bottom:14px}
+  #ivc-tip{right:76px;bottom:16px;max-width:190px;font-size:12.5px;padding:11px 32px 11px 13px}
+}

@@ -98,7 +98,7 @@ col+=uC*f*1.15;col+=uC*pow(max(dot(n,normalize(vec3(-.4,.7,.6))),0.),24.)*.55;co
       uni[u].value.set(a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f, a[2] + (b[2] - a[2]) * f);
     });
     group.position.set(blob.x * (small ? .35 : 1) * 1.6, blob.y, 0);
-    group.scale.setScalar(blob.s * (small ? .75 : 1));
+    group.scale.setScalar(blob.s * (small ? .6 : 1));
     group.rotation.y = t * .15 + sm.x * .5; group.rotation.x = sm.y * .4 + t * .05;
     ring.rotation.z = t * .4; ring2.rotation.z = -t * .3;
     pts.rotation.y = t * .03 + sm.x * .15; pts.rotation.x = sm.y * .1;
@@ -107,6 +107,16 @@ col+=uC*f*1.15;col+=uC*pow(max(dot(n,normalize(vec3(-.4,.7,.6))),0.),24.)*.55;co
     renderer.render(scene, cam);
   })();
 })();
+
+/* shared pointer: position + inside-window flag; listeners run on move, scroll and leave */
+const ptr = { x: -9999, y: -9999, in: false }, ptrFns = [];
+const onPtr = fn => ptrFns.push(fn);
+let ptrQ = false; const ptrRun = () => { ptrQ = false; ptrFns.forEach(f => f()); };
+const ptrSoon = () => { if (!ptrQ) { ptrQ = true; requestAnimationFrame(ptrRun); } };
+addEventListener('mousemove', e => { ptr.x = e.clientX; ptr.y = e.clientY; ptr.in = true; ptrSoon(); }, { passive: true });
+addEventListener('scroll', ptrSoon, { passive: true });
+document.addEventListener('mouseout', e => { if (!e.relatedTarget) { ptr.in = false; ptrSoon(); } });
+addEventListener('blur', () => { ptr.in = false; ptrSoon(); });
 
 /* =====================================================================
    HELPERS
@@ -215,16 +225,29 @@ if (cur && !touch) {
     const sp = clamp(Math.hypot(dx, dy) / 30, 0, .6);
     if (!cur.dataset.big) gsap.set(cur, { scaleX: 1 + sp, scaleY: 1 - sp * .5, rotate: Math.atan2(dy, dx) * 180 / Math.PI });
   });
-  document.addEventListener('mouseover', e => {
-    const t = e.target.closest('[data-cursor]');
+  const HOV = 'a,button,input,select,textarea,label,[role=button]';
+  let curState = '';
+  const curSet = el => {
+    const t = el && el.closest ? el.closest('[data-cursor]') : null;
+    const h = !t && el && el.closest ? el.closest(HOV) : null;
+    const st = t ? 'lab:' + t.dataset.cursor : h ? 'hov' : '';
+    if (st === curState) return; curState = st;
+    gsap.killTweensOf(cur, 'scale,scaleX,scaleY,rotate');
     if (t) { cur.classList.add('lab'); cur.dataset.big = 1; curLbl.textContent = t.dataset.cursor; gsap.to(cur, { scale: 6, scaleX: 6, scaleY: 6, rotate: 0, duration: .4, ease: 'power3' }); }
-    else if (e.target.closest('a,button,input,select,textarea,label')) { cur.classList.remove('lab'); cur.dataset.big = 1; gsap.to(cur, { scale: 3, scaleX: 3, scaleY: 3, rotate: 0, duration: .3 }); }
-  });
-  document.addEventListener('mouseout', e => {
-    if (e.target.closest('[data-cursor],a,button,input,select,textarea,label') && !(e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('[data-cursor],a,button'))) {
-      cur.classList.remove('lab'); delete cur.dataset.big; gsap.to(cur, { scale: 1, scaleX: 1, scaleY: 1, duration: .4 });
-    }
-  });
+    else if (h) { cur.classList.remove('lab'); cur.dataset.big = 1; gsap.to(cur, { scale: 3, scaleX: 3, scaleY: 3, rotate: 0, duration: .3 }); }
+    else { cur.classList.remove('lab'); delete cur.dataset.big; gsap.to(cur, { scale: 1, scaleX: 1, scaleY: 1, duration: .4 }); }
+  };
+  let px = -1, py = -1, inWin = false, recheck = false;
+  const curCheck = () => { recheck = false; curSet(inWin && px >= 0 ? document.elementFromPoint(px, py) : null); };
+  const curSoon = () => { if (!recheck) { recheck = true; requestAnimationFrame(curCheck); } };
+  addEventListener('mousemove', e => { px = e.clientX; py = e.clientY; inWin = true; curSoon(); }, { passive: true });
+  document.addEventListener('mouseover', e => { inWin = true; curSet(e.target); });
+  document.addEventListener('mouseout', e => { if (!e.relatedTarget) { inWin = false; curSet(null); } else curSet(e.relatedTarget); });
+  addEventListener('scroll', curSoon, { passive: true });
+  addEventListener('wheel', curSoon, { passive: true });
+  addEventListener('blur', () => { inWin = false; curSet(null); });
+  document.addEventListener('click', () => setTimeout(curSoon, 60));
+  setInterval(() => { if (inWin) curCheck(); }, 500); // safety net: content that moves or disappears under a still mouse
 }
 addEventListener('pointerdown', e => {
   if (e.target.closest('input,select,textarea')) return;
@@ -343,7 +366,7 @@ $$('[data-blob]').forEach(sec => {
 { const first = $('[data-blob]'); if (first) { const [x, y, s, c] = first.dataset.blob.split(',').map(Number); Object.assign(blob, { x, y, s, c }); Object.assign(blobT, { x, y, s, c }); } }
 const skewEls = $$('.svc-grid,.blog,.reasons,.chips,.plans,.related,.tool-grid,.pairs');
 const skewSet = skewEls.map(el => gsap.quickTo(el, 'skewY', { duration: .6, ease: 'power3' }));
-gsap.ticker.add(() => { const sk = clamp(scrollVel / 400, -5, 5); skewSet.forEach(f => f(sk)); });
+gsap.ticker.add(() => { const sk = small ? 0 : clamp(scrollVel / 400, -5, 5); skewSet.forEach(f => f(sk)); });
 
 /* marquee */
 function marquee(el, dir) {
@@ -371,19 +394,24 @@ $$('.cnt').forEach(el => ScrollTrigger.create({ trigger: el, start: 'top 88%', o
    ===================================================================== */
 if (heroChars.length && !touch) {
   const qs = heroChars.map(c => ({ y: gsap.quickTo(c, 'y', { duration: .5, ease: 'power3' }), s: gsap.quickTo(c, 'scale', { duration: .5, ease: 'power3' }), el: c }));
-  let on = true; ScrollTrigger.create({ trigger: '.hero', start: 'top top', end: 'bottom top', onToggle: s => on = s.isActive });
-  addEventListener('mousemove', e => {
-    if (!on || intro.isActive()) return;
-    qs.forEach(q => { const r = q.el.getBoundingClientRect(), d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2)); const f = clamp(1 - d / 220, 0, 1); q.y(-f * 36); q.s(1 + f * .25); });
-  });
+  let on = true, lifted = false;
+  const hReset = () => { if (!lifted) return; lifted = false; qs.forEach(q => { q.y(0); q.s(1); }); };
+  const hProx = () => {
+    if (!on || !ptr.in) return hReset();
+    if (intro.isActive()) return;
+    lifted = true;
+    qs.forEach(q => { const r = q.el.getBoundingClientRect(), d = Math.hypot(ptr.x - (r.left + r.width / 2), ptr.y - (r.top + r.height / 2)); const f = clamp(1 - d / 220, 0, 1); q.y(-f * 36); q.s(1 + f * .25); });
+  };
+  ScrollTrigger.create({ trigger: '.hero', start: 'top top', end: 'bottom top', onToggle: s => { on = s.isActive; hProx(); } });
+  onPtr(hProx);
 }
 if (heroChars.length) {
-  gsap.to(heroChars, { yPercent: () => gsap.utils.random(-200, -40), xPercent: () => gsap.utils.random(-80, 80), rotate: () => gsap.utils.random(-60, 60), opacity: 0, ease: 'none', stagger: { each: .004, from: 'random' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 } });
+  gsap.fromTo(heroChars, { yPercent: 0, xPercent: 0, rotate: 0, opacity: 1 }, { immediateRender: false, yPercent: () => gsap.utils.random(-200, -40), xPercent: () => gsap.utils.random(-80, 80), rotate: () => gsap.utils.random(-60, 60), opacity: 0, ease: 'none', stagger: { each: .004, from: 'random' }, scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1 } });
   gsap.to('.hero-bottom,.hero .eyebrow', { y: -120, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: '60% top', scrub: true } });
   gsap.to('.badge', { rotate: 360, scale: .4, y: 300, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
 }
 if (pChars.length && $('.phero')) {
-  gsap.to(pChars, { yPercent: () => gsap.utils.random(-120, -20), rotate: () => gsap.utils.random(-30, 30), opacity: 0, ease: 'none', stagger: { each: .003, from: 'random' }, scrollTrigger: { trigger: '.phero', start: '30% top', end: 'bottom top', scrub: 1 } });
+  gsap.fromTo(pChars, { yPercent: 0, rotate: 0, opacity: 1 }, { immediateRender: false, yPercent: () => gsap.utils.random(-120, -20), rotate: () => gsap.utils.random(-30, 30), opacity: 0, ease: 'none', stagger: { each: .003, from: 'random' }, scrollTrigger: { trigger: '.phero', start: '30% top', end: 'bottom top', scrub: 1 } });
 }
 
 /* stats band */
@@ -450,7 +478,7 @@ if ($('.proc-pin')) {
   pt.to(pTrack, { x: () => -pDist(), ease: 'none' }, 0).to(pPath, { strokeDashoffset: 0, ease: 'none' }, 0);
   const ca = pt.getChildren()[0];
   steps.forEach(s => {
-    gsap.fromTo(s, { rotateY: -55, z: -250, opacity: .2, scale: .85 }, { rotateY: 0, z: 0, opacity: 1, scale: 1, ease: 'power2.out', scrollTrigger: { trigger: s, containerAnimation: ca, start: 'left 100%', end: 'left 45%', scrub: true } });
+    gsap.fromTo(s, small ? { opacity: .35, scale: .94 } : { rotateY: -55, z: -250, opacity: .2, scale: .85 }, { rotateY: 0, z: 0, opacity: 1, scale: 1, ease: 'power2.out', scrollTrigger: { trigger: s, containerAnimation: ca, start: 'left 100%', end: 'left 45%', scrub: true } });
     gsap.fromTo($('.num', s), { xPercent: 80 }, { xPercent: -20, ease: 'none', scrollTrigger: { trigger: s, containerAnimation: ca, start: 'left right', end: 'right left', scrub: true } });
   });
 }
@@ -471,7 +499,7 @@ const cases = $$('.case');
 cases.forEach((c, i) => {
   gsap.from(c, { y: 200, rotate: i % 2 ? 4 : -4, scale: .9, ease: 'power3.out', scrollTrigger: { trigger: c, start: 'top bottom', end: 'top 30%', scrub: 1 } });
   gsap.from($$('.met', c), { scale: .5, opacity: 0, rotate: () => gsap.utils.random(-20, 20), stagger: .08, duration: .8, ease: 'back.out(2)', scrollTrigger: { trigger: c, start: 'top 60%' } });
-  if (i < cases.length - 1) gsap.to(c, { scale: .88, filter: 'brightness(.45) blur(2px)', ease: 'none', scrollTrigger: { trigger: cases[i + 1], start: 'top bottom', end: 'top 12%', scrub: true } });
+  if (i < cases.length - 1) gsap.to(c, { scale: .88, filter: small ? 'brightness(.6)' : 'brightness(.45) blur(2px)', ease: 'none', scrollTrigger: { trigger: cases[i + 1], start: 'top bottom', end: 'top 12%', scrub: true } });
 });
 
 /* bot */
@@ -660,9 +688,12 @@ $$('.giant').forEach(giant => {
   gsap.from(gL, { yPercent: -200, rotate: () => gsap.utils.random(-90, 90), opacity: 0, stagger: { each: .06, from: 'random' }, duration: 1.6, ease: 'bounce.out', scrollTrigger: { trigger: giant, start: 'top 98%', toggleActions: 'play none none reverse' } });
   if (!touch) {
     const gq = gL.map(l => ({ l, y: gsap.quickTo(l, 'y', { duration: .6, ease: 'power3' }), r: gsap.quickTo(l, 'rotate', { duration: .6, ease: 'power3' }) }));
-    addEventListener('mousemove', e => {
-      const gr = giant.getBoundingClientRect(); if (gr.top > innerHeight || gr.bottom < 0) return;
-      gq.forEach(q => { const r = q.l.getBoundingClientRect(), dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2), f = clamp(1 - Math.hypot(dx, dy) / 260, 0, 1); q.y(-f * 80); q.r(f * (dx > 0 ? -18 : 18)); q.l.style.color = f > .2 ? '#ff5a1f' : ''; });
+    let gLift = false;
+    onPtr(() => {
+      const gr = giant.getBoundingClientRect(), vis = !(gr.top > innerHeight || gr.bottom < 0);
+      if (!ptr.in || !vis) { if (gLift) { gLift = false; gq.forEach(q => { q.y(0); q.r(0); q.l.style.color = ''; }); } return; }
+      gLift = true;
+      gq.forEach(q => { const r = q.l.getBoundingClientRect(), dx = ptr.x - (r.left + r.width / 2), dy = ptr.y - (r.top + r.height / 2), f = clamp(1 - Math.hypot(dx, dy) / 260, 0, 1); q.y(-f * 80); q.r(f * (dx > 0 ? -18 : 18)); q.l.style.color = f > .2 ? '#ff5a1f' : ''; });
     });
   }
 });
