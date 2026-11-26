@@ -40,10 +40,10 @@ var IVIA_CHAT = {
   var HK = 'ivc_hist_' + persona;
 
   var PERS = {
-    ivia: { name: 'Ivvy <em>by ivia</em>', short: 'Ivvy', av: '<span class="eyes"><i></i><i></i></span>', avc: '',
+    ivia: { name: 'Ivvy <em>by ivia solutions</em>', short: 'Ivvy', av: '<span class="eyes"><i></i><i></i></span>', avc: '',
       hello: "Hi! I'm **Ivvy**, ivia's assistant. Ask me anything about our services, pricing, results or Bidvista, or tell me what you're trying to grow.",
       ph: 'Ask Ivvy about ads, pricing, Bidvista…', tip: "Hi, I'm Ivvy 👋 Questions about ads, pricing or Bidvista? Ask me." },
-    bidvista: { name: 'Ivvy <em>by ivia</em>', short: 'Ivvy', av: '<span class="eyes"><i></i><i></i></span>', avc: '',
+    bidvista: { name: 'Ivvy <em>by ivia solutions</em>', short: 'Ivvy', av: '<span class="eyes"><i></i><i></i></span>', avc: '',
       hello: "Hi! I'm **Ivvy**, ivia's assistant. On this page I can tell you about Bidvista, explain ACOS, TACOS and bids, run the bid formulas for you, or add you to early access.",
       ph: 'Ask Ivvy about Bidvista, ACOS, bids…', tip: "Hi, I'm Ivvy 👋 Ask me about Bidvista or your Amazon numbers." }
   };
