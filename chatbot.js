@@ -11,7 +11,7 @@
      chat quietly falls back to the knowledge base.
    ===================================================================== */
 var IVIA_CHAT = {
-  AI_URL: '',                                     // e.g. 'https://ivia-chat.your-name.workers.dev'
+  AI_URL: 'https://ivia-chat.bhavay0011.workers.dev',                                     // e.g. 'https://ivia-chat.your-name.workers.dev'
   LEAD_FORM: 'https://formspree.io/f/xykngvlj',   // where leads captured in the chat are sent
   WHATSAPP: '918607070505',                       // country code + number, digits only
   EMAIL: 'connect@bidvista.org',
