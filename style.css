@@ -1015,3 +1015,10 @@ a.svc:hover{border-color:rgba(255,90,31,.4)}
 @keyframes sdPulse{from{transform:scale(1);opacity:.8}to{transform:scale(3);opacity:0}}
 #overlay a.big.sister sup{background:#fff;color:#0a0a0b}
 @media (prefers-reduced-motion:reduce){.nav-links a.sister .sd:after{animation:none}}
+/* sister mobile */
+.sister-m{display:none}
+@media (max-width:900px){.sister-m{display:inline-flex;align-items:center;gap:7px;margin:0 14px 0 auto;padding:8px 13px;border-radius:99px;background:#fff;color:#0a0a0b;font-size:13px;font-weight:600;line-height:1;white-space:nowrap}
+.sister-m .sd{position:relative;width:7px;height:7px;border-radius:50%;background:#5b6cff}
+.sister-m .sd:after{content:"";position:absolute;inset:0;border-radius:50%;background:#5b6cff;animation:sdPulse 1.8s ease-out infinite}}
+#overlay a.big.sister .t{background:linear-gradient(90deg,#8f9bff,#c3c9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (prefers-reduced-motion:reduce){.sister-m .sd:after{animation:none}}
