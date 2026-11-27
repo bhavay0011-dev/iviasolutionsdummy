@@ -12,7 +12,7 @@
    ===================================================================== */
 var IVIA_CHAT = {
   AI_URL: 'https://ivia-chat.bhavay0011.workers.dev',                                     // e.g. 'https://ivia-chat.your-name.workers.dev'
-  LEAD_FORM: 'https://formspree.io/f/xykngvlj',   // where leads captured in the chat are sent
+  LEAD_FORM: 'https://ivia-chat.bhavay0011.workers.dev/lead',   // where leads captured in the chat are sent
   WHATSAPP: '918607070505',                       // country code + number, digits only
   EMAIL: 'connect@bidvista.org',
   NUDGE_AFTER_SECONDS: 10                         // small "ask me" bubble once per visit; 0 = never
